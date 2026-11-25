@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trường Huy Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#0B0A08;--s1:#15120D;--s2:#120F0A;--s3:#17130C;--l1:#2E271B;--l2:#3A3122;--l3:#5A4A2A;--l4:#4A3D24;
+  --tx:#F6EFE2;--t2:#D9CDB6;--t3:#B5A992;--t4:#8F846F;--gold:#F2CC6B;--gold-h:#FFE29A;--coral:#F2896B;--ink:#0B0A08;
+  --track:#241F16;--bar-old:#5A4E3A;
+  --g:linear-gradient(120deg,#FFE08A 0%,#E9A93A 52%,#B86B1B 100%);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--l3) var(--bg)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-wrap:break-word}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3,p,ul,ol,figure,table{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:var(--gold);text-underline-offset:.2em}
+a:hover{color:var(--gold-h)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+img{max-width:100%;height:auto;display:block}
+::selection{background:#5A4A2A;color:var(--tx)}
+html[data-lang="en"] .vi{display:none!important}
+html:not([data-lang="en"]) .en{display:none!important}
+.disp{font-family:"Bricolage Grotesque","Be Vietnam Pro",system-ui,sans-serif}
+.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.page{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:0;padding-bottom:max(32px,env(safe-area-inset-bottom,0px))}
+@media (min-width:720px){.page{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.col{max-width:1200px;margin-inline:auto}
+section{scroll-margin-top:84px}
+.eyebrow{color:var(--gold);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+h2.h{font-family:"Bricolage Grotesque","Be Vietnam Pro",sans-serif;font-size:clamp(32px,4vw,56px);line-height:1.05;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+h3.h3{font-family:"Bricolage Grotesque","Be Vietnam Pro",sans-serif;font-size:clamp(24px,2.4vw,32px);line-height:1.15;font-weight:800;letter-spacing:-.01em}
+.sec{padding-block:48px}
+@media (min-width:720px){.sec{padding-block:72px}}
+.sub{color:var(--t3);max-width:34em}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--l2);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--t2);min-height:34px}
+.pill.gold{border-color:var(--l4);background:var(--s3);color:var(--gold);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px;text-align:center}
+.btn.gold{background:var(--g);color:var(--ink)}
+.btn.gold:hover{color:var(--ink);filter:brightness(1.06)}
+.btn.line{border:1.5px solid var(--l3);color:var(--tx);font-weight:600}
+.btn.line:hover{color:var(--tx);border-color:var(--gold)}
+.card{background:var(--s1);border:1px solid var(--l1);border-radius:24px;padding:26px}
+.ph{border:1.5px dashed var(--l3);background:var(--s3);color:var(--t4);border-radius:18px;padding:16px;font-size:15px;display:grid;place-items:center;text-align:center}
+.ph-inline{border:1px dashed var(--l3);background:var(--s3);color:var(--gold);border-radius:8px;padding:1px 8px;font-size:.92em;white-space:nowrap}
+.note{border-left:3px solid var(--l3);padding:4px 0 4px 16px;color:var(--t3);font-size:15px}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll-x:focus-visible{outline-offset:-2px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--l1)}
+@media (min-width:720px){.nav{padding-left:max(32px,env(safe-area-inset-left,0px))!important;padding-right:max(32px,env(safe-area-inset-right,0px))!important}}
+.nav .col{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tx);font-weight:800;font-size:20px;min-height:44px}
+.logo:hover{color:var(--tx)}
+.logo b{width:40px;height:40px;border-radius:12px;background:var(--g);color:var(--ink);display:grid;place-items:center;font-size:16px;font-weight:800}
+.navr{display:flex;align-items:center;gap:8px;font-size:15px}
+.navr .lk{display:none;color:var(--t2);text-decoration:none;padding:0 10px;min-height:44px;align-items:center}
+.navr .lk:hover{color:var(--gold-h)}
+@media (min-width:1180px){.navr .lk{display:inline-flex}.navr{gap:12px}}
+.lang{display:flex;border:1px solid var(--l2);border-radius:999px;padding:3px}
+.lang button{border:0;border-radius:999px;min-width:44px;min-height:44px;background:transparent;color:var(--t3);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--tx);color:var(--ink)}
+.navr .cta{padding:0 20px;min-height:44px;font-size:15px}
+@media (max-width:480px){.logo span{display:none}.nav .col{flex-wrap:nowrap;gap:8px}.navr{gap:6px}.navr .cta{padding:0 12px;font-size:14px}.lang button{min-width:44px}}
+.btn.dash{border:1.5px dashed var(--l3);color:var(--gold);background:var(--s3)}
+.btn.dash:hover{color:var(--gold-h);border-color:var(--gold)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:40px;align-items:center;padding-top:40px;padding-bottom:24px}
+@media (min-width:720px){.hero{padding-top:64px;gap:48px}}
+.hero-l{display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero h1{font-family:"Bricolage Grotesque","Be Vietnam Pro",sans-serif;font-size:clamp(34px,4.6vw,64px);line-height:1.06;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+.hero .lead{color:var(--t2);font-size:19px;max-width:34em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-r{position:relative;display:grid;place-items:center;min-width:0;gap:16px}
+.ring{width:min(340px,78vw);aspect-ratio:1;border-radius:50%;padding:6px;background:var(--g)}
+.ring>img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 35%;background:var(--s3)}
+.ring>div{width:100%;height:100%;border-radius:50%;background:var(--s3);display:grid;place-items:center;color:var(--t4);font-size:15px;text-align:center;padding:12px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.chip{background:var(--s1);border:1px solid var(--l2);border-radius:20px;padding:14px 18px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.chip .n{font-size:34px;font-weight:800;line-height:1}
+.chip .c{color:var(--t3);font-size:13px;margin-top:6px}
+.chip.w{background:var(--tx);color:var(--ink);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;border:0}
+@media (min-width:720px){
+  .hero-r{min-height:480px}
+  .chips{display:block}
+  .chip{position:absolute}
+  .chip.a{top:14px;left:0}
+  .chip.w{bottom:0;left:24px}
+}
+
+/* results */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.rc{background:var(--s1);border:1px solid var(--l1);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:8px}
+.rc .n{font-size:clamp(36px,4vw,46px);font-weight:800;line-height:1.05}
+.rc .n.long{font-size:clamp(26px,2.1vw,32px);white-space:nowrap}
+.rc .t{font-weight:600}
+.rc .s{color:var(--t3);font-size:14px}
+.figure{background:var(--s2);border:1px solid var(--l2);border-radius:28px;padding:clamp(18px,3vw,32px)}
+.figure h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.figure .cap{color:var(--t3);font-size:14px;margin-top:14px}
+.figure img{width:100%}
+.mw-640{min-width:640px}
+.mw-560{min-width:560px}
+.mw-720{min-width:820px}
+.mw-560{min-width:560px}
+.flex2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;align-items:start}
+
+/* case detail */
+.case{border-top:1px solid var(--l1);padding-block:48px;display:flex;flex-direction:column;gap:32px}
+.chead{display:flex;flex-direction:column;gap:12px}
+.chead .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.chead .num{color:var(--t4);font-weight:700}
+.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.blk{background:var(--s1);border:1px solid var(--l1);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.blk h4{margin:0;color:var(--gold);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.blk p,.blk li{color:var(--t2);font-size:16px}
+.blk li{position:relative;padding-left:18px}
+.blk li+li{margin-top:8px}
+.blk li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--g)}
+.blk.wide{grid-column:1/-1}
+.finding{background:var(--s1);border:1px solid var(--coral);border-radius:28px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:14px}
+.ftag{align-self:flex-start;background:var(--coral);color:var(--ink);border-radius:999px;padding:5px 14px;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.fnum{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;font-family:"Bricolage Grotesque","Be Vietnam Pro",sans-serif;font-weight:800}
+.fnum .a{font-size:clamp(34px,4.4vw,52px);color:var(--t2)}
+.fnum .ar{font-size:clamp(28px,3vw,36px);color:var(--t4)}
+.fnum .b{font-size:clamp(44px,6vw,72px);color:var(--coral);line-height:1}
+table.t{border-collapse:collapse;width:100%;font-size:15px}
+table.t caption{text-align:left;color:var(--t3);font-size:14px;padding-bottom:12px}
+table.t th,table.t td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--l1);vertical-align:top}
+table.t th{color:var(--t3);font-weight:600;font-size:13px;white-space:nowrap}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.t td.k{font-weight:800;font-size:18px;color:var(--gold);font-family:"Bricolage Grotesque",sans-serif}
+table.t .hi{color:var(--gold);font-weight:700}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--g);color:var(--ink);display:grid;place-items:center;font-size:15px}
+.step span{color:var(--t2);font-size:16px;padding-top:3px}
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.brief div{border:1px solid var(--l2);border-radius:18px;padding:16px;background:var(--s3)}
+.brief b{display:block;color:var(--gold);font-size:13px;letter-spacing:.06em;margin-bottom:6px}
+.brief span{color:var(--t2);font-size:15px}
+
+/* tracker */
+.spot{background:var(--s2);border:1px solid var(--l2);border-radius:36px;padding:clamp(22px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:44px}
+.spot-l,.spot-r{display:flex;flex-direction:column;gap:22px;min-width:0}
+.badge{align-self:flex-start;background:var(--g);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.bar-row{display:flex;flex-direction:column;gap:10px}
+.bar-row>span{font-weight:600}
+.bgrid{display:grid;grid-template-columns:52px minmax(0,1fr) 96px;align-items:center;gap:10px 12px;font-size:14px}
+.trk{height:12px;border-radius:999px;background:var(--track);overflow:hidden;display:block}
+.trk i{display:block;height:100%;border-radius:999px}
+.axis{display:grid;grid-template-columns:52px minmax(0,1fr) 96px;gap:12px;font-size:12px;color:var(--t4)}
+.axis div{display:flex;justify-content:space-between}
+.dec{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--l1);padding-top:22px}
+.dec li{color:var(--t2);font-size:16px;position:relative;padding-left:18px}
+.dec li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--g)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.feat .card{padding:22px;display:flex;flex-direction:column;gap:6px}
+.feat b{font-size:17px}
+.feat span{color:var(--t3);font-size:15px}
+.new{display:inline-block;background:var(--g);color:var(--ink);border-radius:999px;padding:1px 9px;font-size:11px;font-weight:800;margin-left:8px;vertical-align:middle;letter-spacing:.04em}
+.ill{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.ui{background:var(--s1);border:1px solid var(--l2);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.ui-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--l1);background:var(--s2);font-weight:700;font-size:14px}
+.ui-b{padding:16px;display:flex;flex-direction:column;gap:12px;font-size:14px}
+.ui-f{padding:10px 16px;border-top:1px dashed var(--l2);color:var(--t4);font-size:12.5px}
+.fake{color:var(--gold);font-size:12px;font-weight:700;border:1px dashed var(--l3);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.sev{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:800;margin-right:6px}
+.sev.bad{background:var(--coral);color:var(--ink)}
+.sev.warn{background:var(--gold);color:var(--ink)}
+.sev.info{background:var(--l2);color:var(--t2)}
+.msg{background:var(--s3);border:1px solid var(--l1);border-radius:14px;padding:10px 12px;color:var(--t2)}
+.mrow{display:flex;justify-content:space-between;gap:10px;align-items:baseline;color:var(--t2)}
+.mrow b{font-family:"Bricolage Grotesque",sans-serif;font-size:20px}
+.mini{height:10px;border-radius:999px;background:var(--track);position:relative;overflow:visible}
+.mini i{position:absolute;left:0;top:0;bottom:0;border-radius:999px}
+.mini u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--tx);text-decoration:none}
+.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--t3);font-size:12.5px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.shot{margin:0;background:var(--s1);border:1px solid var(--l2);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.shot-b{position:relative;display:block;width:100%;padding:0;margin:0;border:0;background:none;color:inherit;line-height:0;cursor:zoom-in;border-radius:0}
+.shot-b:focus-visible{outline-offset:-3px}
+.shot-b img{width:100%;height:auto}
+.shot figcaption{padding:12px 16px 14px;border-top:1px solid var(--l1);color:var(--t3);font-size:13.5px;line-height:1.5}
+.shots-a{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px;align-items:start}
+.shots-a .stack{display:flex;flex-direction:column;gap:18px;min-width:0}
+.shots-b{display:flex;gap:18px;align-items:stretch}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+dialog.lb{border:1px solid var(--l2);border-radius:22px;background:var(--s2);color:var(--tx);padding:0;max-width:min(96vw,1600px);max-height:94vh;overflow:auto}
+dialog.lb::backdrop{background:rgba(11,10,8,.88)}
+dialog.lb img{display:block;max-width:100%;max-height:calc(94vh - 56px);width:auto;height:auto;margin:0 auto}
+.lb-x{position:sticky;top:0;float:right;z-index:2;margin:8px;min-height:44px;min-width:44px;border-radius:999px;border:1px solid var(--l3);background:var(--bg);color:var(--tx);font:inherit;font-weight:700;cursor:pointer;padding:0 16px}
+@media (max-width:760px){.shots-a{grid-template-columns:minmax(0,1fr)}.shots-b{flex-direction:column}.shots-b>.shot{flex:none!important;width:100%}}
+
+/* ai */
+.agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
+.agrid .card .h3{font-size:26px;font-weight:800;display:block;margin-bottom:8px}
+.agrid .card p{color:var(--t2);font-size:16px}
+
+/* contact */
+.band{background:var(--g);color:var(--ink);border-radius:40px;padding:clamp(28px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:end}
+.band h2{font-family:"Bricolage Grotesque","Be Vietnam Pro",sans-serif;font-size:clamp(34px,5vw,72px);line-height:1;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+.band p{font-size:18px;font-weight:500;max-width:30em;margin-top:16px}
+.band :focus-visible{outline-color:var(--ink)}
+.cbox{display:flex;flex-direction:column;gap:12px;font-weight:600;min-width:0}
+.cph{background:var(--ink);color:var(--tx);border:1px dashed #8F846F;border-radius:18px;padding:14px 20px;min-height:52px;display:flex;align-items:center}
+.cv{display:flex;flex-wrap:wrap;gap:12px}
+.cv a{color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:0 20px;min-height:48px;display:inline-flex;align-items:center;text-decoration:none;font-weight:600}
+.cv a:hover{background:rgba(11,10,8,.1);color:var(--ink)}
+.foot{margin-top:28px;color:var(--t4);font-size:14px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* restructure additions */
+.proof{display:grid;grid-template-columns:1fr;border-top:1px solid var(--l1)}
+.pf{display:grid;grid-template-columns:minmax(128px,auto) minmax(0,1fr);gap:4px 16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--l1)}
+.pf .n{font-size:30px;font-weight:800;line-height:1;white-space:nowrap}
+.pf .n.long{font-size:26px}
+.pf .t{font-weight:600;font-size:15px;line-height:1.35}
+.pf .t small{display:block;color:var(--t3);font-weight:400;font-size:13px}
+@media (min-width:720px){.proof{grid-template-columns:.85fr 1.4fr 1fr;gap:20px;border-top:0}.pf{grid-template-columns:minmax(0,1fr);padding:0;border:0;gap:6px;align-content:start}.pf .n{display:flex;align-items:flex-end;min-height:38px}.pf .n{font-size:clamp(30px,2.6vw,38px)}.pf .n.long{font-size:clamp(22px,1.9vw,30px)}}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:0}
+.dl>div{background:var(--s1);border:1px solid var(--l1);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.dl dt{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dl dd{margin:0;color:var(--t2);font-size:16px}
+.dl .wide{grid-column:1/-1}
+.role{display:inline-flex;align-items:center;min-height:30px;padding:3px 12px;border-radius:999px;background:var(--g);color:var(--ink);font-size:13px;font-weight:800;align-self:flex-start}
+.fcase{background:var(--s2);border:1px solid var(--l2);border-radius:36px;padding:clamp(20px,4vw,48px);gap:28px}
+.sumbox{display:grid;grid-template-columns:minmax(0,1fr);border:1px solid var(--l4);border-radius:22px;background:var(--s3);overflow:hidden}
+.sumbox>div{padding:16px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.sumbox>div+div{border-top:1px solid var(--l1)}
+.sumbox b{color:var(--gold);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.sumbox p{color:var(--tx);font-size:16px}
+@media (min-width:860px){.sumbox:not(.stack){grid-template-columns:repeat(3,minmax(0,1fr))}.sumbox:not(.stack)>div+div{border-top:0;border-left:1px solid var(--l1)}.sumbox:not(.stack)>div:not(:last-child) b::after{content:" \2192"}}
+.mlist{display:flex;flex-direction:column;gap:10px}
+details.more{background:var(--s1);border:1px solid var(--l1);border-radius:20px;scroll-margin-top:84px}
+details.more[open]{border-color:var(--l3)}
+.msum{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(130px,210px) minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:14px 20px;min-height:64px;border-radius:20px}
+.msum::-webkit-details-marker{display:none}
+.msum:hover{background:var(--s3)}
+.msum .mm{display:flex;flex-direction:column;gap:2px;min-width:0}
+.msum .m{font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.1}
+.msum .cp{color:var(--t4);font-size:12.5px;line-height:1.35}
+.msum .mt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.msum .ti{font-weight:700;font-size:18px;line-height:1.3}
+.msum .one{color:var(--t3);font-size:14px}
+.tog{color:var(--gold);font-weight:600;font-size:14px;white-space:nowrap;display:inline-flex;align-items:center}
+.tog::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:10px;margin-top:-3px;transition:transform .2s}
+details[open] .tog::after{transform:rotate(-135deg);margin-top:3px}
+.tog .to{display:none}
+details[open] .tog .to{display:inline}
+details[open] .tog .tc{display:none}
+@media (max-width:760px){.msum{grid-template-columns:minmax(0,1fr)}}
+.mbody{padding:8px 20px 28px;display:flex;flex-direction:column;gap:28px}
+.cv a{background:var(--ink);color:var(--tx);border-color:var(--ink)}
+.cv a:hover{background:#1c1810;color:var(--gold-h)}
+#cv{scroll-margin-top:96px}
+</style>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Điều hướng / Navigation" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))">
+  <div class="col">
+    <a href="#top" class="logo disp"><b>TH</b><span>Trường Huy</span></a>
+    <div class="navr">
+      <a class="lk" href="#summary"><span class="vi">Tóm tắt</span><span class="en">Summary</span></a>
+      <a class="lk" href="#results"><span class="vi">Kết quả</span><span class="en">Results</span></a>
+      <a class="lk" href="#cases"><span class="vi">Case nổi bật</span><span class="en">Featured cases</span></a>
+      <a class="lk" href="#more"><span class="vi">Kinh nghiệm khác</span><span class="en">More experience</span></a>
+      <a class="lk" href="#ai"><span class="vi">Làm việc với AI</span><span class="en">Working with AI</span></a>
+      <div class="lang" role="group" aria-label="Ngôn ngữ / Language">
+        <button type="button" data-set-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#cv" class="btn dash cta"><span class="vi">Tải CV</span><span class="en">Download CV</span></a>
+      <a href="#contact" class="btn gold cta"><span class="vi">Liên hệ</span><span class="en">Contact</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="page" id="top">
+<main class="col">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-l">
+    <span class="pill gold" style="align-self:flex-start">Performance Marketing · Meta Ads · Automation · SEO</span>
+    <h1><span class="vi">Nguyễn Trường Huy, <span class="gt">Performance Marketer</span> cho sản phẩm giá cao</span><span class="en">Nguyen Truong Huy, <span class="gt">Performance Marketer</span> for high&#8209;ticket products</span></h1>
+    <p class="lead"><span class="vi">Chạy Meta Ads gần 2 năm cho ghế massage giá khoảng 13⁠–⁠140 triệu đồng tại Campuchia; đo bằng đơn hàng, không chỉ tin nhắn rẻ.</span><span class="en">Nearly 2 years running Meta Ads for $500–$5,499 massage chairs in Cambodia; measured by orders, not just cheap messages.</span></p>
+    <div class="proof">
+      <div class="pf"><span class="n disp gt">+69%</span><span class="t"><span class="vi">doanh thu</span><span class="en">revenue</span><small><span class="vi">cùng tháng T2, T4–T9, 2026 so với 2025</span><span class="en">same months (Feb, Apr–Sep), 2026 vs 2025</span></small></span></div>
+      <div class="pf"><span class="n long disp gt"><span class="vi">30,2</span><span class="en">30.2</span>% → <span class="vi">26,9</span><span class="en">26.9</span>%</span><span class="t"><span class="vi">chi phí / doanh thu</span><span class="en">ad cost / revenue</span><small><span class="vi">thấp hơn là tốt hơn</span><span class="en">lower is better</span></small></span></div>
+      <div class="pf"><span class="n disp gt"><span class="vi">4 tỷ+</span><span class="en">160K+</span></span><span class="t"><span class="vi">đồng ngân sách tự quản lý</span><span class="en">USD ad budget managed</span><small><span class="vi">01/2025 đến nay</span><span class="en">Jan 2025 to date</span></small></span></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#cv" class="btn gold" style="padding-inline:28px"><span class="vi">Tải CV </span><span class="en">Download CV </span><span class="ph-inline" style="margin-left:6px;color:var(--ink);border-color:var(--ink);background:transparent">[link]</span></a>
+      <a href="#contact" class="btn line"><span class="vi">Liên hệ</span><span class="en">Contact</span></a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="ring"><img src="img/portrait.jpg" width="720" height="720" alt="Nguyễn Trường Huy / Nguyen Truong Huy"></div>
+    <div class="chips">
+      <div class="chip a"><div class="n disp gt">20h+</div><div class="c"><span class="vi">mỗi tháng tiết kiệm báo cáo</span><span class="en">saved on reporting each month</span></div></div>
+      <div class="chip w"><span class="vi">Từ 01/2025 · Zahaka Cambodia</span><span class="en">Since Jan 2025 · Zahaka Cambodia</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- SUMMARY -->
+<section id="summary" class="sec" aria-labelledby="sum-h" style="padding-top:32px;display:flex;flex-direction:column;gap:24px">
+  <h2 class="h" id="sum-h"><span class="vi">Tóm tắt 30 giây</span><span class="en">30-second summary</span></h2>
+  <dl class="dl">
+    <div><dt><span class="vi">Vị trí mong muốn</span><span class="en">Target role</span></dt><dd><span class="ph-inline"><span class="vi">[Vị trí mong muốn]</span><span class="en">[Target role]</span></span></dd></div>
+    <div><dt><span class="vi">Kinh nghiệm</span><span class="en">Experience</span></dt><dd><span class="vi">Meta Ads từ 01/2025 tại Zahaka Cambodia, gần 2 năm. Nhân viên Marketing (Performance &amp; Automation).</span><span class="en">Meta Ads since Jan 2025 at Zahaka Cambodia, nearly 2 years. Marketing Executive (Performance &amp; Automation).</span></dd></div>
+    <div><dt><span class="vi">Quy mô</span><span class="en">Scale</span></dt><dd><span class="vi">Khoảng 10 tài khoản quảng cáo. Tự phụ trách 6 page (4 page ghế cao cấp, 2 page sản phẩm bán kèm, giá trị đơn khoảng 1/7 ghế lớn), hỗ trợ vận hành 4 page của trưởng phòng. Khoảng 200 triệu đồng/tháng, tổng hơn 4 tỷ đồng.</span><span class="en">About 10 ad accounts. I own 6 pages (4 premium chairs, 2 add-on products, order value about 1/7 of a premium chair) and help operate 4 more for the manager. About $8,000/month, over $160,000 in total.</span></dd></div>
+    <div><dt><span class="vi">Ngành / mô hình</span><span class="en">Industry / model</span></dt><dd><span class="vi">Hàng giá cao (ghế khoảng 13⁠–⁠140 triệu đồng), O2O: quảng cáo → tin nhắn → showroom. Seller chốt đơn trên Pancake.</span><span class="en">High-ticket goods ($500–$5,499 chairs), O2O: ads → messages → showroom. Sellers close orders in Pancake.</span></dd></div>
+    <div><dt><span class="vi">Điểm mạnh</span><span class="en">Strengths</span></dt><dd><span class="vi">Lập kế hoạch và quản lý ngân sách, tối ưu ROAS/CPL/CPA theo đơn hàng, A/B test content, đọc số và chẩn đoán phễu, tự động hoá báo cáo bằng dashboard và AI.</span><span class="en">Campaign planning and budget management, ROAS/CPL/CPA optimisation for orders, creative A/B testing, reading numbers and diagnosing the funnel, automating reports with dashboards and AI.</span></dd></div>
+    <div><dt><span class="vi">Công cụ</span><span class="en">Tools</span></dt><dd><span class="vi">Facebook/Meta Ads Manager (quảng cáo tin nhắn Click-to-Messenger), Pancake CRM, Google Sheets/Excel, Google Search Console, dashboard tự xây (Claude Code), ChatGPT/GPT-Image, WordPress/WooCommerce.</span><span class="en">Facebook/Meta Ads Manager (click-to-Messenger ads), Pancake CRM, Google Sheets/Excel, Google Search Console, a self-built dashboard (Claude Code), ChatGPT/GPT-Image, WordPress/WooCommerce.</span></dd></div>
+    <div><dt><span class="vi">Vai trò thêm</span><span class="en">Extra role</span></dt><dd><span class="vi">Hỗ trợ trưởng phòng tổng hợp và phân tích số liệu của cả team 4 người cho báo cáo tuần/tháng.</span><span class="en">Help the manager consolidate and analyze data for the 4-person team's weekly and monthly reports.</span></dd></div>
+    <div><dt><span class="vi">Ngôn ngữ làm việc</span><span class="en">Working languages</span></dt><dd><span class="vi">Tiếng Việt</span><span class="en">Vietnamese</span></dd></div>
+    <div><dt><span class="vi">Nơi làm việc · Thời gian bắt đầu</span><span class="en">Location · Start date</span></dt><dd><span class="vi">Đang ở TP. Hồ Chí Minh. </span><span class="en">Based in Ho Chi Minh City. </span><span class="ph-inline"><span class="vi">[Nơi làm việc / remote]</span><span class="en">[Location / remote]</span></span> <span class="ph-inline"><span class="vi">[Có thể bắt đầu từ]</span><span class="en">[Available from]</span></span></dd></div>
+  </dl>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="sec" aria-labelledby="results-h" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <h2 class="h" id="results-h"><span class="vi">Doanh thu tăng, chi phí giảm</span><span class="en">Revenue up, cost down</span></h2>
+    <p class="sub"><span class="vi">So 2026 với 2025, cùng các tháng có số liệu (T2, T4–T9). Mọi con số là tỷ lệ, số đơn hoặc chỉ số, không có doanh thu tuyệt đối.</span><span class="en">2026 versus 2025, same months with data (Feb, Apr–Sep). Every figure is a ratio, an order count or an index, never absolute revenue.</span></p>
+  </div>
+  <div class="rgrid">
+    <div class="rc"><span class="n disp gt">+69%</span><span class="t"><span class="vi">doanh thu</span><span class="en">revenue</span></span><span class="s"><span class="vi">chỉ số 2025 = 100 → 2026 = 169</span><span class="en">index 2025 = 100 → 2026 = 169</span></span></div>
+    <div class="rc"><span class="n disp gt">+60%</span><span class="t"><span class="vi">đơn ghế lớn</span><span class="en">premium-chair orders</span></span><span class="s"><span class="vi">83 → 133 đơn</span><span class="en">83 → 133 orders</span></span></div>
+    <div class="rc"><span class="n disp gt">−33%</span><span class="t"><span class="vi">giá mỗi tin nhắn ghế lớn</span><span class="en">cost per premium-chair message</span></span><span class="s"><span class="vi">chỉ số 2025 = 100 → 2026 = 67</span><span class="en">index 2025 = 100 → 2026 = 67</span></span></div>
+    <div class="rc"><span class="n disp gt">5/5</span><span class="t"><span class="vi">lần chi phí/doanh thu được kéo về dưới trần 28%</span><span class="en">times cost/revenue was pulled back under the 28% ceiling</span></span><span class="s"><span class="vi">trong 1–3 tháng mỗi lần</span><span class="en">within 1–3 months each time</span></span></div>
+  </div>
+  <p class="sub" style="max-width:none"><span class="vi"><b>ROAS trung bình toàn kỳ 3,3x</b> (T2/2025–T9/2026); tháng tốt nhất T5/2026 đạt 4,4x.</span><span class="en"><b>Average ROAS over the whole period 3.3x</b> (Feb 2025 – Sep 2026); best month, May 2026, reached 4.4x.</span></p>
+  <figure class="figure">
+    <h3><span class="vi">Ghế lớn theo quý: số đơn, giá mỗi tin nhắn, tỷ lệ tin nhắn ra đơn</span><span class="en">Premium chairs by quarter: orders, cost per message, message-to-order rate</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Chart">
+      <img class="vi" style="max-width:760px;min-width:560px;margin-inline:auto" src="img/quarterly_vi.svg" alt="Biểu đồ ghế lớn theo quý từ Q2/2025 đến Q3/2026. Số đơn: 32, 50, 35, 70, 52, 58. Chỉ số giá mỗi tin nhắn (cả 2025 = 100): 97, 108, 94, 86, 74, 63. Tỷ lệ tin nhắn ra đơn: 7,6%, 8,7%, 5,1%, 7,7%, 5,9%, 4,8%." width="760" height="700">
+      <img class="en" style="max-width:760px;min-width:560px;margin-inline:auto" src="img/quarterly_en.svg" alt="Chart of premium chairs by quarter, Q2 2025 to Q3 2026. Orders: 32, 50, 35, 70, 52, 58. Cost per message index (full 2025 = 100): 97, 108, 94, 86, 74, 63. Message-to-order rate: 7.6%, 8.7%, 5.1%, 7.7%, 5.9%, 4.8%." width="760" height="700">
+    </div>
+    <p class="cap"><span class="vi">Chỉ số giá mỗi tin nhắn: cả 10 tháng 2025 = 100. Tỷ lệ tin nhắn ra đơn = số đơn / số tin nhắn ghế lớn. Bỏ Q1/2025 vì chỉ có 1 tháng số liệu.</span><span class="en">Cost per message index: all 10 months of 2025 = 100. Message-to-order rate = orders / premium-chair messages. Q1 2025 is left out because it has only 1 month of data.</span></p>
+  </figure>
+  <p class="note"><span class="vi"><b>Kỳ so sánh:</b> cùng các tháng T2, T4–T9 của hai năm (T1, T3/2025 không có báo cáo). Số liệu đến hết T9/2026.</span><span class="en"><b>Period:</b> the same months, Feb and Apr–Sep, in both years (no reports for Jan and Mar 2025). Figures run to the end of Sep 2026.</span></p>
+</section>
+
+<!-- FEATURED CASES -->
+<section id="cases" class="sec" aria-labelledby="cases-h" style="padding-bottom:24px;display:flex;flex-direction:column;gap:32px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+    <h2 class="h" id="cases-h"><span class="vi">3 case nổi bật</span><span class="en">3 featured cases</span></h2>
+    <p class="sub"><span class="vi">Mỗi case đi theo mạch vấn đề, việc tôi làm, kết quả. Số liệu dùng tỷ lệ, không lộ doanh thu tuyệt đối.</span><span class="en">Each case follows problem, what I did, result. Figures are ratios; absolute revenue is never shown.</span></p>
+  </div>
+<!-- CASE 1 -->
+<section id="case-1" class="case fcase" aria-labelledby="c1-h">
+  <div class="chead">
+    <div class="row"><span class="pill"><span class="vi">Tăng trưởng</span><span class="en">Growth</span></span><span class="role"><span class="vi">Tự làm</span><span class="en">Done myself</span></span></div>
+    <h3 class="h3" id="c1-h"><span class="vi">Tăng quy mô nhưng vẫn giữ chi phí</span><span class="en">Scaling up while holding costs</span></h3>
+  </div>
+  <div class="sumbox" role="group" aria-label="Vấn đề, Tôi đã làm, Kết quả / Problem, What I did, Result">
+    <div><b><span class="vi">Vấn đề</span><span class="en">Problem</span></b><p><span class="vi">Sản phẩm giá cao, chu kỳ ra quyết định dài; tin nhắn nhiều chưa chắc ra đơn, mà quy mô tăng thì chi phí dễ tăng theo.</span><span class="en">High-ticket product with a long decision cycle; many messages do not necessarily become orders, and costs tend to rise as spend scales.</span></p></div>
+    <div><b><span class="vi">Tôi đã làm</span><span class="en">What I did</span></b><p><span class="vi">Phân bổ ngân sách theo sản phẩm, đặt ngưỡng dừng theo Cost Mess, Cost Data, Cost Đơn và %MKT; test content theo mã, dừng bài kém, dồn ngân sách cho bài hiệu quả.</span><span class="en">Allocated budget by product and set stop thresholds on cost per message, per data point, per order and cost/revenue %; tested creatives by code, paused weak ones and moved budget to winners.</span></p></div>
+    <div><b><span class="vi">Kết quả</span><span class="en">Result</span></b><p><span class="vi">Cùng các tháng T2, T4–T9: chi phí/doanh thu 30,2% → 26,9%, doanh thu +69%, đơn ghế lớn +60%; giá tin nhắn ghế lớn Q3 −42% với số khách ×2,1.</span><span class="en">Same months (Feb, Apr–Sep): cost/revenue 30.2% → 26.9%, revenue +69%, premium-chair orders +60%; Q3 premium-chair cost per message −42% with message volume ×2.1.</span></p></div>
+  </div>
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Việc tôi làm</span><span class="en">What I did</span></h4><ul>
+      <li><span class="vi">Phân bổ ngân sách theo sản phẩm, theo dõi chi hằng ngày, đặt ngưỡng dừng theo Cost Mess, Cost Data, Cost Đơn và % chi phí/doanh thu.</span><span class="en">Allocated budget by product, tracked spend daily, set stop thresholds on cost per message, per data point, per order and cost/revenue %.</span></li>
+      <li><span class="vi">Test content theo mã; dừng bài kém, dồn ngân sách cho bài hiệu quả.</span><span class="en">Tested creatives by code; paused weak ones and moved budget to winners.</span></li>
+      <li><span class="vi">Tải danh sách số điện thoại khách đã mua lên Meta để tạo tệp lookalike.</span><span class="en">Uploaded the phone-number list of past buyers to Meta to build a lookalike audience.</span></li></ul></div>
+    <div class="blk"><h4><span class="vi">Kết quả</span><span class="en">Results</span></h4><ul>
+      <li><span class="vi">Cùng các tháng T2, T4–T9: chi phí/doanh thu 30,2% (2025) → 26,9% (2026); từng quý Q1–Q3/2026 đều 27–28%. Doanh thu 2026 cao hơn 69%.</span><span class="en">Same months (Feb, Apr–Sep): cost/revenue 30.2% (2025) → 26.9% (2026); each quarter of Q1–Q3 2026 at 27–28%. 2026 revenue is 69% higher.</span></li>
+      <li><span class="vi">Giá tin nhắn ghế lớn −42%, số khách nhắn tin ×2,1 (Q3/2025 → Q3/2026).</span><span class="en">Cost per premium-chair message −42% with message volume ×2.1 (Q3 2025 → Q3 2026).</span></li>
+      <li><span class="vi">Nhóm quảng cáo album ảnh: chi phí 12,6% doanh thu (ROAS khoảng 7,9x), T2/2025–T9/2026.</span><span class="en">Photo-album ad group: cost at 12.6% of revenue (about 7.9x ROAS), Feb 2025 – Sep 2026.</span></li>
+      <li><span class="vi">298 đơn ghế cao cấp từ quảng cáo (T2/2025 – T9/2026).</span><span class="en">298 premium-chair orders from ads (Feb 2025 – Sep 2026).</span></li>
+      <li><span class="vi">Tháng tốt nhất T5/2026: chi phí 22,6% doanh thu (ROAS 4,4x). T8/2026, nhóm ghế lớn: doanh thu +12% trong khi chi −19%.</span><span class="en">Best month, May 2026: cost at 22.6% of revenue (4.4x ROAS). Aug 2026, premium chairs: revenue +12% while spend −19%.</span></li></ul></div>
+    <div class="blk wide"><h4><span class="vi">Kéo chỉ số về khi xấu đi</span><span class="en">Pulling the numbers back when they worsen</span></h4>
+      <p><span class="vi"><b>5 lần chỉ số xấu đi, cả 5 lần kéo về dưới trần 28% trong 1–3 tháng.</b> Trần 28% là mức chi phí/doanh thu công ty đặt ra. Cột “Xấu đi” là chi phí/doanh thu tổng / ghế lớn.</span><span class="en"><b>The numbers worsened 5 times, and all 5 times they came back under the 28% ceiling within 1–3 months.</b> 28% is the company ceiling for cost/revenue. The “Worsened” column shows total / premium-chair cost/revenue.</span></p>
+      <div class="scroll-x" tabindex="0" role="group" aria-label="Table"><table class="t" style="min-width:760px">
+        <thead><tr><th scope="col"><span class="vi">Lần</span><span class="en">No.</span></th><th scope="col"><span class="vi">Xấu đi</span><span class="en">Worsened</span></th><th scope="col"><span class="vi">Kéo về</span><span class="en">Pulled back</span></th><th scope="col"><span class="vi">Việc đã làm</span><span class="en">What was done</span></th></tr></thead>
+        <tbody><tr><td class="k">1</td><td><span class="vi">T5/2025: 54,1% / 51,8%</span><span class="en">May 2025: 54.1% / 51.8%</span></td><td><span class="vi">T6 31,1% → T7 23,5%</span><span class="en">Jun 31.1% → Jul 23.5%</span></td><td><span class="vi">Mở kênh sản phẩm bán kèm 1D; chuyển bài chương trình đắt sang remarketing.</span><span class="en">Opened the 1D add-on channel; moved expensive offer posts to remarketing.</span></td></tr><tr><td class="k">2</td><td><span class="vi">T8/2025: 34,2% / 42,1%</span><span class="en">Aug 2025: 34.2% / 42.1%</span></td><td><span class="vi">T9/2025: 27,0%</span><span class="en">Sep 2025: 27.0%</span></td><td><span class="vi">Giảm ngân sách test; giá mỗi tin nhắn theo tuần 1,21 triệu → 654 nghìn đồng.</span><span class="en">Cut test budget; weekly cost per message roughly halved.</span></td></tr><tr><td class="k">3</td><td><span class="vi">T10–T12/2025: 40,7–48,6%</span><span class="en">Oct–Dec 2025: 40.7–48.6%</span></td><td><span class="vi">T1/2026: 23,2%</span><span class="en">Jan 2026: 23.2%</span></td><td><span class="vi">Tắt dòng ghế H4 sau 8 tuần không ra đơn (bài học: đặt trần test); chia page chính và page vệ tinh.</span><span class="en">Switched off the H4 chair line after 8 weeks with no orders (lesson: set a test cap); split into a main page and satellite pages.</span></td></tr><tr><td class="k">4</td><td><span class="vi">T3/2026: 42,4% / 49,6%</span><span class="en">Mar 2026: 42.4% / 49.6%</span></td><td><span class="vi">T4/2026: 24,7%</span><span class="en">Apr 2026: 24.7%</span></td><td><span class="vi">Đổi tệp khách, hạn chế content giảm giá sâu (chẩn đoán: giảm giá kéo khách ham rẻ).</span><span class="en">Changed the audience and limited deep-discount content (diagnosis: discounts attract bargain hunters).</span></td></tr><tr><td class="k">5</td><td><span class="vi">T6–T7/2026: tổng 35,4% và 32,4% (ghế lớn 34,1% và 34,3%)</span><span class="en">Jun–Jul 2026: total 35.4% and 32.4% (premium chairs 34.1% and 34.3%)</span></td><td><span class="vi">T8/2026: 25,9%</span><span class="en">Aug 2026: 25.9%</span></td><td><span class="vi">Giữ sản phẩm mới A11 khi đơn về chậm, tăng ngân sách từng bước 20–30%; tuần chốt yếu nhận định là đơn ghi nhận trễ, không cắt vội (dự báo đúng 2 lần).</span><span class="en">Kept the new product A11 while orders arrived slowly and raised budget in steps of 20–30%; on weak closing weeks I judged orders were logged late and did not cut in a hurry (the call was right twice).</span></td></tr></tbody></table></div>
+      <p class="note" style="margin-top:14px"><span class="vi"><b>Lưu ý trung thực:</b> nhiều thay đổi diễn ra cùng lúc, có yếu tố mùa lễ và quyết định của công ty, nên đây là các việc đi cùng với kết quả, không chứng minh từng việc gây ra kết quả.</span><span class="en"><b>Honest note:</b> many changes happened at the same time, with holiday-season effects and company decisions in the mix, so these are actions that went alongside the results, not proof that each one caused them.</span></p></div>
+  </div>
+  <figure class="figure">
+    <h3><span class="vi">Chi phí quảng cáo / doanh thu theo tháng (thấp hơn là tốt hơn)</span><span class="en">Ad cost / revenue by month (lower is better)</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Chart">
+      <img class="vi mw-640" src="img/monthly_vi.svg" alt="Biểu đồ cột chi phí quảng cáo trên doanh thu theo tháng, T2/2025 đến T9/2026, với vạch đứt là trần 28%. Số 1 đến 5 đánh dấu 5 lần chỉ số xấu đi và được kéo về. T1 và T3/2025 không có số liệu." width="1100" height="540">
+      <img class="en mw-640" src="img/monthly_en.svg" alt="Bar chart of ad cost over revenue by month, Feb 2025 to Sep 2026, with a dashed line at the 28% ceiling. Numbers 1 to 5 mark the 5 times the figure worsened and was pulled back. Jan and Mar 2025 have no data." width="1100" height="540">
+    </div>
+    <p class="cap"><span class="vi">Chi phí quảng cáo / doanh thu theo tháng, T2/2025–T9/2026. Vạch đứt là trần 28%. Số 1–5 đánh dấu 5 lần chỉ số xấu đi và được kéo về. T1 và T3/2025 không có báo cáo. Ghế cao cấp + sản phẩm bán kèm.</span><span class="en">Ad cost / revenue by month, Feb 2025 – Sep 2026. The dashed line is the 28% ceiling. Numbers 1–5 mark the 5 times the figure worsened and was pulled back. No reports for Jan and Mar 2025. Premium chairs + add-on products.</span></p>
+  </figure>
+</section>
+
+<!-- CASE 2 -->
+<section id="case-2" class="case fcase" aria-labelledby="c2-h">
+  <div class="chead">
+    <div class="row"><span class="pill" style="border-color:var(--coral);color:var(--coral)"><span class="vi">Phát hiện</span><span class="en">Finding</span></span><span class="role"><span class="vi">Tự làm</span><span class="en">Done myself</span></span></div>
+    <h3 class="h3" id="c2-h"><span class="vi">"Tin nhắn rẻ chưa chắc là tốt"</span><span class="en">"Cheap messages are not always good"</span></h3>
+  </div>
+  <div class="sumbox" role="group" aria-label="Vấn đề, Tôi đã làm, Kết quả / Problem, What I did, Result">
+    <div><b><span class="vi">Vấn đề</span><span class="en">Problem</span></b><p><span class="vi">Giá mỗi tin nhắn giảm 42% nhưng tỷ lệ chốt (đơn / tin nhắn, ghế lớn) giảm từ 8,7% xuống 4,8%: tin nhắn rẻ hơn nhưng nhiều người chỉ hỏi giá.</span><span class="en">Cost per message fell 42% but the close rate (orders / messages, premium chairs) fell from 8.7% to 4.8%: messages got cheaper but many people only ask for the price.</span></p></div>
+    <div><b><span class="vi">Tôi đã làm</span><span class="en">What I did</span></b><p><span class="vi">Đổi cách chấm content: từ giá tin nhắn sang tỷ lệ lead hợp lệ và số đơn; content không mở đầu bằng giảm giá.</span><span class="en">Changed how I score creatives: from cost per message to qualified-lead rate and orders; creatives no longer open with a discount.</span></p></div>
+    <div><b><span class="vi">Kết quả</span><span class="en">Result</span></b><p><span class="vi">Số đơn ghế lớn Q3/2026 vẫn cao hơn cùng kỳ (58 so với 50, +16%) dù tỷ lệ chốt giảm, nhờ số khách nhắn tin gấp 2,1 lần; bài học dẫn tới cách chấm content theo chất lượng khách.</span><span class="en">Premium-chair orders in Q3 2026 were still above the same quarter a year earlier (58 vs 50, +16%) despite the lower close rate, thanks to 2.1 times as many people messaging; the lesson led to scoring creatives by customer quality.</span></p></div>
+  </div>
+  <div class="finding">
+    <span class="ftag"><span class="vi">Phát hiện</span><span class="en">Finding</span></span>
+    <div class="fnum"><span class="a"><span class="vi">8,7</span><span class="en">8.7</span>%</span><span class="ar">→</span><span class="b"><span class="vi">4,8</span><span class="en">4.8</span>%</span></div>
+    <p style="color:var(--t2)"><span class="vi"><b>Tỷ lệ chốt (đơn / tin nhắn, ghế lớn) giảm từ Q3/2025 xuống Q3/2026</b> trong khi giá mỗi tin nhắn giảm 42%. Tin nhắn rẻ hơn nhưng nhiều người chỉ hỏi giá. Quý 3/2026 là mức thấp nhất trong 6 quý có đủ số liệu; tỷ lệ này dao động theo quý (Q1/2026 là 7,7%) nên cần theo dõi tiếp.</span><span class="en"><b>The close rate (orders / messages, premium chairs) fell from Q3 2025 to Q3 2026</b> while cost per message fell 42%. Messages got cheaper but many people only ask for the price. Q3 2026 is the lowest of the 6 quarters with full data; the rate moves from quarter to quarter (Q1 2026 was 7.7%), so it needs continued watching.</span></p>
+  </div>
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Bài học</span><span class="en">Lesson</span></h4><p><span class="vi">Với hàng giá cao, chỉ số cần tối ưu là chất lượng khách, không phải giá rẻ nhất hay CTR cao nhất.</span><span class="en">For high-ticket goods, the metric to optimize is customer quality, not the lowest price or the highest CTR.</span></p></div>
+  </div>
+  <figure class="figure">
+    <h3><span class="vi">Bằng chứng theo quý</span><span class="en">The evidence by quarter</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Chart">
+      <img class="vi" style="max-width:760px;min-width:560px;margin-inline:auto" src="img/quarterly_vi.svg" alt="Biểu đồ theo quý: giá mỗi tin nhắn (chỉ số) giảm từ 108 xuống 63 từ Q3/2025 đến Q3/2026, còn tỷ lệ tin nhắn ra đơn giảm từ 8,7% xuống 4,8%." width="760" height="700">
+      <img class="en" style="max-width:760px;min-width:560px;margin-inline:auto" src="img/quarterly_en.svg" alt="Quarterly chart: cost per message (index) fell from 108 to 63 between Q3 2025 and Q3 2026, while the message-to-order rate fell from 8.7% to 4.8%." width="760" height="700">
+    </div>
+    <p class="cap"><span class="vi">Q2/2025 – Q3/2026. Chỉ số giá mỗi tin nhắn: cả 2025 = 100.</span><span class="en">Q2 2025 – Q3 2026. Cost per message index: full 2025 = 100.</span></p>
+  </figure>
+</section>
+
+<!-- TRACKER -->
+<section id="tracker" aria-labelledby="trk-h" style="display:flex;flex-direction:column;gap:36px;border-top:1px solid var(--l1);padding-top:48px">
+  <div class="spot">
+    <div class="spot-l">
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><span class="badge"><span class="vi">DỰ ÁN CHÍNH</span><span class="en">MAIN PROJECT</span></span><span class="role"><span class="vi">Thiết kế nghiệp vụ, điều phối AI viết code</span><span class="en">Business design, directing AI to write the code</span></span></div>
+      <h3 class="h3" id="trk-h" style="font-size:clamp(30px,3vw,42px)">Meta Ads Tracker</h3>
+      <p style="color:var(--t2)"><span class="vi">Web báo cáo và cảnh báo tự động cho đội quảng cáo. Tôi thiết kế nghiệp vụ (đo gì, ngưỡng nào, cảnh báo khi nào) và điều phối AI agent (Claude Code) viết code.</span><span class="en">An automated reporting and alerting web app for the ad team. I design the business logic (what to measure, which thresholds, when to alert) and direct AI agents (Claude Code) that write the code.</span></p>
+      <p style="color:var(--t3);font-size:15px"><span class="vi">Dự án từ 05/10/2026, vẫn đang phát triển.</span><span class="en">Built since 05/10/2026 and still evolving.</span></p>
+      <div class="sumbox stack" role="group" aria-label="Vấn đề, Tôi đã làm, Kết quả / Problem, What I did, Result">
+        <div><b><span class="vi">Vấn đề</span><span class="en">Problem</span></b><p><span class="vi">Team chưa có quy trình báo cáo: Google Sheet làm tay, chậm, dễ lệch số; chỉ biết chiến dịch có vấn đề vào sáng hôm sau.</span><span class="en">The team had no reporting process: manual Google Sheets, slow and error-prone; problems showed up only the next morning.</span></p></div>
+        <div><b><span class="vi">Tôi đã làm</span><span class="en">What I did</span></b><p><span class="vi">Thiết kế nghiệp vụ (đo gì, ngưỡng nào, cảnh báo khi nào) và điều phối Claude Code viết code; đồng bộ 12 lần/ngày, khoảng 9 nhóm cảnh báo qua Telegram.</span><span class="en">Designed the business logic (what to measure, which thresholds, when to alert) and directed Claude Code to write the code; 12 syncs a day, about 9 alert families via Telegram.</span></p></div>
+        <div><b><span class="vi">Kết quả</span><span class="en">Result</span></b><p><span class="vi">Tiết kiệm hơn 20 giờ làm báo cáo mỗi tháng; chi phí vận hành 0 đồng.</span><span class="en">Over 20 hours of reporting saved each month; zero running cost.</span></p></div>
+      </div>
+      <ul style="display:flex;flex-wrap:wrap;gap:10px">
+        <li class="pill"><span class="vi">8 job đồng bộ, 12 lần/ngày</span><span class="en">8 sync jobs, 12 runs/day</span></li>
+        <li class="pill"><span class="vi">~9 nhóm cảnh báo qua Telegram</span><span class="en">~9 alert families via Telegram</span></li>
+        <li class="pill"><span class="vi">Chi phí vận hành 0 đồng</span><span class="en">Zero running cost</span></li>
+        <li class="pill"><span class="vi">Hơn 1.100 test tự động</span><span class="en">Over 1,100 automated tests</span></li>
+        <li class="pill">React · TypeScript · Supabase · Cloudflare</li>
+      </ul>
+      <figure class="shot">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_01_tongquan.png"><img src="img/tracker/tracker_01_tongquan.png" width="2880" height="1800" alt="Màn hình Tổng quan của Meta Ads Tracker (dữ liệu mẫu): giá Lead, giá Data và %MKT so với mục tiêu, hành trình khách và dự báo doanh thu tháng" data-alt-vi="Màn hình Tổng quan của Meta Ads Tracker (dữ liệu mẫu): giá Lead, giá Data và %MKT so với mục tiêu, hành trình khách và dự báo doanh thu tháng" data-alt-en="Meta Ads Tracker Overview screen (sample data): cost per Lead, Data and %MKT against target, customer journey and the monthly revenue forecast"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Trang Tổng quan của một người chạy ads, nhóm sản phẩm Ghế lớn: tóm tắt một câu, Giá/Lead, Giá/Data, %MKT so với mục tiêu (thanh đỏ = vượt mục tiêu), hành trình khách từ Lead đến chốt đơn, page hiệu quả nhất và dự báo doanh thu tháng. Ảnh chọn đúng lúc các mục tiêu đang vượt để cho thấy web báo vấn đề ra sao; đây không phải kết quả tổng kết của tôi.</span><span class="en">The Overview page for one ads runner and product group: a one-line summary, cost per Lead / Data / %MKT against target (red bar = over target), the customer journey from Lead to closed order, the best page and the monthly revenue forecast. The screenshot was taken while targets were being missed to show how the app flags problems; it is not my overall result.</span></figcaption>
+        </figure>
+    </div>
+    <div class="spot-r">
+      <span class="eyebrow"><span class="vi">Thời gian làm báo cáo</span><span class="en">Time spent on reports</span></span>
+      <div class="bar-row"><span><span class="vi">Báo cáo trong ngày</span><span class="en">Intraday report</span></span>
+        <div class="bgrid"><span style="color:var(--t4)"><span class="vi">Trước</span><span class="en">Before</span></span><span class="trk"><i style="width:16.7%;background:var(--bar-old)"></i></span><span style="color:var(--t3);text-align:right"><span class="vi">15 phút</span><span class="en">15 min</span></span>
+        <span style="color:var(--gold)"><span class="vi">Sau</span><span class="en">After</span></span><span class="trk"><i style="width:5.6%;background:var(--g)"></i></span><span class="disp gt" style="text-align:right;font-weight:800;font-size:18px"><span class="vi">5 phút</span><span class="en">5 min</span></span></div></div>
+      <div class="bar-row"><span><span class="vi">Báo cáo tổng ngày hôm qua</span><span class="en">Yesterday's summary report</span></span>
+        <div class="bgrid"><span style="color:var(--t4)"><span class="vi">Trước</span><span class="en">Before</span></span><span class="trk"><i style="width:66.7%;background:var(--bar-old)"></i></span><span style="color:var(--t3);text-align:right"><span class="vi">1 giờ</span><span class="en">1 hour</span></span>
+        <span style="color:var(--gold)"><span class="vi">Sau</span><span class="en">After</span></span><span class="trk"><i style="width:16.7%;background:var(--g)"></i></span><span class="disp gt" style="text-align:right;font-weight:800;font-size:18px"><span class="vi">15 phút</span><span class="en">15 min</span></span></div></div>
+      <div class="bar-row"><span><span class="vi">Báo cáo hiệu quả content</span><span class="en">Creative performance report</span></span>
+        <div class="bgrid"><span style="color:var(--t4)"><span class="vi">Trước</span><span class="en">Before</span></span><span class="trk"><i style="width:100%;background:var(--bar-old)"></i></span><span style="color:var(--t3);text-align:right"><span class="vi">1–2 giờ</span><span class="en">1–2 hours</span></span>
+        <span style="color:var(--gold)"><span class="vi">Sau</span><span class="en">After</span></span><span class="trk"><i style="width:30.6%;background:var(--g)"></i></span><span class="disp gt" style="text-align:right;font-weight:800;font-size:18px"><span class="vi">25–30 phút</span><span class="en">25–30 min</span></span></div></div>
+      <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>30</span><span>60</span><span><span class="vi">90 phút</span><span class="en">90 min</span></span></div><span></span></div>
+      <p style="color:var(--t3);font-size:13px"><span class="vi">Cùng một trục 0–90 phút. Khoảng thời gian được vẽ ở điểm giữa (1–2 giờ = 90 phút; 25–30 phút = 27,5 phút). Tổng tiết kiệm hơn 20 giờ mỗi tháng. Từ giữa T11/2026 dùng làm nguồn số liệu cho báo cáo tuần.</span><span class="en">Same 0–90 minute axis. Ranges are drawn at their midpoint (1–2 hours = 90 min; 25–30 min = 27.5 min). Total saving over 20 hours a month. Since mid-Nov 2026 it has been used as a data source for weekly reports.</span></p>
+      <div class="dec"><span class="eyebrow"><span class="vi">Quyết định nghiệp vụ</span><span class="en">Business decisions</span></span><ul style="display:flex;flex-direction:column;gap:12px">
+        <li><span class="vi"><b>Lead chốt lúc 11h hôm sau:</b> khách được gắn thẻ muộn, nên số của ngày D chỉ tin được sau 11h ngày D+1.</span><span class="en"><b>Leads lock at 11:00 the next day:</b> customers get tagged late, so day D's numbers are only reliable after 11:00 on D+1.</span></li>
+        <li><span class="vi"><b>Không cảnh báo theo xếp hạng tương tác/chuyển đổi:</b> Meta báo "dưới trung bình" cho 40/48 quảng cáo ở thị trường này, nên chỉ hiện tham khảo.</span><span class="en"><b>No alerts on engagement/conversion rankings:</b> Meta flags 40 of 48 ads as "below average" in this market, so it is shown for reference only.</span></li>
+        <li><span class="vi"><b>Không khuyên cắt vị trí hiển thị chính:</b> bản đầu báo sai 15 chiến dịch; siết luật còn 1–3 cảnh báo đúng. Cảnh báo sai còn tệ hơn không cảnh báo.</span><span class="en"><b>Never advise cutting a main placement:</b> the first version was wrong on 15 campaigns; tightened rules leave 1–3 correct alerts. A false alert is worse than no alert.</span></li>
+        <li><span class="vi"><b>Hook rate tính lại sau khi tạm dừng:</b> tránh báo nhầm "giảm 97%" khi quảng cáo đổi từ video sang ảnh.</span><span class="en"><b>Hook rate restarts after a pause:</b> avoids a false "down 97%" when an ad switches from video to image.</span></li>
+        <li><span class="vi"><b>Không tin API tuyệt đối:</b> hơn 10.000 nhóm quảng cáo đã chạy xong vẫn báo đang bật; chỉ xét chiến dịch có chi tiêu 3 ngày gần nhất.</span><span class="en"><b>Never trust the API blindly:</b> over 10,000 finished ad sets still report "active"; only campaigns with spend in the last 3 days are considered.</span></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <span class="eyebrow"><span class="vi">Tracker làm được gì</span><span class="en">What the tracker does</span></span>
+    <div class="feat">
+      <div class="card"><b><span class="vi">Phân tích trong ngày theo giờ</span><span class="en">Hourly intraday analysis</span><span class="new"><span class="vi">MỚI</span><span class="en">NEW</span></span></b><span><span class="vi">So số tới giờ hiện tại với cùng giờ hôm qua, tuần trước và trung bình 7 ngày, thay vì đợi sáng hôm sau.</span><span class="en">Compares today up to the current hour with the same hour yesterday, last week and the 7-day average, instead of waiting for tomorrow morning.</span></span></div>
+      <div class="card"><b><span class="vi">~9 nhóm cảnh báo mỗi giờ, đẩy Telegram</span><span class="en">~9 alert families hourly, pushed to Telegram</span><span class="new"><span class="vi">MỚI</span><span class="en">NEW</span></span></b><span><span class="vi">Tính sẵn trên server. Mỗi cảnh báo gửi một lần, chỉ gửi lại khi nặng hơn; giờ yên lặng 23:00–07:00.</span><span class="en">Computed on the server. Each alert is sent once and re-sent only when it gets worse; quiet hours 23:00–07:00.</span></span></div>
+      <div class="card"><b><span class="vi">Trang Ngân sách: campaign tắt hẳn</span><span class="en">Budget page: stopped campaigns</span><span class="new"><span class="vi">MỚI</span><span class="en">NEW</span></span></b><span><span class="vi">Nêu tên campaign đã tắt, lý do, và hiệu quả 7 ngày trước khi tắt so với mục tiêu.</span><span class="en">Names each stopped campaign, the reason, and its 7-day performance before the stop versus target.</span></span></div>
+      <div class="card"><b><span class="vi">Đang chờ duyệt</span><span class="en">Pending review</span><span class="new"><span class="vi">MỚI</span><span class="en">NEW</span></span></b><span><span class="vi">Quảng cáo còn trong hàng chờ Meta duyệt được liệt kê riêng; cảnh báo nếu chờ quá 24 giờ.</span><span class="en">Ads still in Meta's review queue are listed separately, with an alert after 24 hours.</span></span></div>
+      <div class="card"><b><span class="vi">Sức khỏe tài khoản quảng cáo</span><span class="en">Ad account health</span></b><span><span class="vi">Lỗi thanh toán, tài khoản bị khóa, quảng cáo bị từ chối, giới hạn chi tiêu, token sắp hết hạn.</span><span class="en">Payment failures, disabled accounts, rejected ads, spend limits, expiring tokens.</span></span></div>
+      <div class="card"><b><span class="vi">Bản đồ nhiệt tuổi × giới</span><span class="en">Age × gender heatmaps</span></b><span><span class="vi">Xem nhóm khách nào nhắn tin và ra Lead theo page và sản phẩm, gắn từng khách về đúng quảng cáo.</span><span class="en">Shows which audience groups message and become leads, by page and product, with each customer tied back to the exact ad.</span></span></div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <span class="eyebrow"><span class="vi">Giao diện thật, dữ liệu mẫu</span><span class="en">The real interface, sample data</span></span>
+    <div class="shots-a">
+      <div class="stack">
+        <figure class="shot">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_02_tronggio.png"><img src="img/tracker/tracker_02_tronggio.png" width="2880" height="1800" alt="Phân tích trong ngày (dữ liệu mẫu): bảng so với hôm qua, tuần trước và trung bình 7 ngày, cảnh báo CPM tăng mạnh và biểu đồ chi tiêu theo giờ" data-alt-vi="Phân tích trong ngày (dữ liệu mẫu): bảng so với hôm qua, tuần trước và trung bình 7 ngày, cảnh báo CPM tăng mạnh và biểu đồ chi tiêu theo giờ" data-alt-en="Intraday analysis (sample data): table versus yesterday, last week and the 7-day average, a CPM surge alert and the hourly spend chart" loading="lazy"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Phân tích trong ngày của Người chạy 2: bảng so hôm nay với hôm qua, thứ Tư tuần trước và trung bình 7 ngày; hệ thống báo &quot;CPM tăng mạnh&quot; (+55% so với TB 7 ngày, chủ yếu do hai campaign) và biểu đồ chi tiêu tích luỹ theo giờ.</span><span class="en">Intraday analysis for Ads Runner 2: today vs yesterday, last Wednesday and the 7-day average, an automatic &quot;CPM surge&quot; alert (+55% vs the 7-day average, attributed to two campaigns) and the cumulative hourly spend chart.</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_05_ngansach.png"><img src="img/tracker/tracker_05_ngansach.png" width="2880" height="1720" alt="Trang Ngân sách (dữ liệu mẫu): campaign đã tắt kèm lý do và hiệu quả 7 ngày trước khi tắt, mục Đang chờ duyệt" data-alt-vi="Trang Ngân sách (dữ liệu mẫu): campaign đã tắt kèm lý do và hiệu quả 7 ngày trước khi tắt, mục Đang chờ duyệt" data-alt-en="Budget page (sample data): stopped campaigns with reason and 7-day performance before the stop, and the Pending review section" loading="lazy"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Trang Ngân sách, khối &quot;Hôm nay thay đổi gì&quot;: ngân sách đang bật giảm 15% so với hôm qua; 3 campaign tắt hẳn, mỗi campaign kèm tên, số tiền, lý do tắt và hiệu quả 7 ngày trước khi tắt so với mục tiêu giá Lead; mục &quot;Đang chờ duyệt&quot; tách riêng ngân sách sẽ chạy khi được Meta duyệt (chờ 31 giờ và 26 giờ). Một số tình huống trong ảnh được dựng thêm để minh hoạ.</span><span class="en">The Budget page, &quot;What changed today&quot; block: running budget is down 15% vs yesterday; 3 campaigns fully stopped, each with name, amount, reason and the 7-day performance before stopping against the cost-per-Lead target; the &quot;Pending review&quot; section lists the budget that will run once Meta approves (waiting 31 h and 26 h), kept separate from running budget. Some of these situations were staged for the screenshot.</span></figcaption>
+        </figure>
+      </div>
+      <figure class="shot">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_04_telegram.png"><img src="img/tracker/tracker_04_telegram.png" width="780" height="1688" alt="Tin cảnh báo trên Telegram gộp theo nhóm, có liên kết mở trang xử lý (bản dựng lại định dạng tin của bot, dữ liệu mẫu)" data-alt-vi="Tin cảnh báo trên Telegram gộp theo nhóm, có liên kết mở trang xử lý (bản dựng lại định dạng tin của bot, dữ liệu mẫu)" data-alt-en="Alert digests on Telegram grouped by category, with links to the page that fixes them (a rendering of the bot&#x27;s message format, sample data)" loading="lazy"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Tin cảnh báo bot gửi Telegram: đã gộp theo nhóm (&quot;Chiến dịch&quot;, &quot;Trong ngày&quot;), mỗi cảnh báo có tên phạm vi và liên kết &quot;Xem trên web&quot; mở thẳng trang xử lý. Đây là bản dựng lại đúng định dạng tin của bot, không phải ảnh chụp màn hình điện thoại.</span><span class="en">The alert digest the bot sends to Telegram: grouped by category (&quot;Campaign&quot;, &quot;Intraday&quot;), each alert with its scope and a &quot;Xem trên web&quot; link that opens the page to fix it. This is a rendering of the bot&#x27;s real message format, not a phone screenshot.</span></figcaption>
+        </figure>
+    </div>
+    <div class="shots-b">
+        <figure class="shot" style="flex:1.6 1 0">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_06_heatmap.png"><img src="img/tracker/tracker_06_heatmap.png" width="2880" height="1800" alt="Bản đồ nhiệt tuổi × giới theo giá trên mỗi tin nhắn (dữ liệu mẫu)" data-alt-vi="Bản đồ nhiệt tuổi × giới theo giá trên mỗi tin nhắn (dữ liệu mẫu)" data-alt-en="Age × gender heatmap of cost per message (sample data)" loading="lazy"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Tệp khách hàng, bản đồ nhiệt Tuổi × Giới theo giá trên mỗi tin nhắn: ô xanh rẻ hơn trung bình, ô đỏ đắt hơn, kèm số tin nhắn, chi tiêu và mức lệch; ô rẻ nhất là Nam 45-54, đắt nhất là Nữ 55-64.</span><span class="en">Audience insights, an Age × Gender heatmap of cost per message: green cells are cheaper than average, red ones dearer, with message count, spend and deviation; cheapest is Male 45-54, dearest is Female 55-64.</span></figcaption>
+        </figure>
+        <figure class="shot" style="flex:.574 1 0">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_03_canhbao.png"><img src="img/tracker/tracker_03_canhbao.png" width="1480" height="2580" alt="Chuông thông báo đang mở: danh sách cảnh báo nặng thuộc nhiều nhóm, mỗi mục có Xem và Bỏ qua (dữ liệu mẫu)" data-alt-vi="Chuông thông báo đang mở: danh sách cảnh báo nặng thuộc nhiều nhóm, mỗi mục có Xem và Bỏ qua (dữ liệu mẫu)" data-alt-en="The notification bell open: a list of severe alerts from several groups, each with Xem and Bỏ qua (sample data)" loading="lazy"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Chuông thông báo đang mở: các cảnh báo mức nặng thuộc nhiều nhóm (mục tiêu %MKT, CPM trong ngày, doanh thu tháng, giá Lead và giá tin nhắn theo campaign, giá Data), mỗi mục có &quot;Xem&quot; để mở thẳng trang xử lý và &quot;Bỏ qua&quot;.</span><span class="en">The notification bell open: severe alerts from several groups (%MKT target, intraday CPM, monthly revenue, cost per Lead and per message by campaign, cost per Data), each with &quot;Xem&quot; (open the page that fixes it) and &quot;Bỏ qua&quot; (dismiss).</span></figcaption>
+        </figure>
+        <figure class="shot" style="flex:.462 1 0">
+          <button type="button" class="shot-b" data-full="img/tracker/tracker_10_mobile.png"><img src="img/tracker/tracker_10_mobile.png" width="780" height="1688" alt="Trang Tổng quan trên điện thoại (dữ liệu mẫu)" data-alt-vi="Trang Tổng quan trên điện thoại (dữ liệu mẫu)" data-alt-en="The Overview page on a phone (sample data)" loading="lazy"><span class="vh"><span class="vi">Phóng to ảnh</span><span class="en">Enlarge image</span></span></button>
+          <figcaption><span class="vi">Trang Tổng quan trên điện thoại: bố cục một cột, thanh lọc gọn một dòng, thanh tab dưới đáy; các thẻ mục tiêu giữ nguyên thông tin như bản máy tính.</span><span class="en">The Overview page on a phone: single-column layout, a compact one-line filter bar and a bottom tab bar; the target cards keep the same information as on desktop.</span></figcaption>
+        </figure>
+    </div>
+    <p class="note"><span class="vi">Ảnh chụp từ bản demo của web: tên và mã thay bằng mẫu; chi tiêu, doanh thu và số khách đã được biến đổi bằng các hệ số bí mật, nên mọi con số và tỷ lệ trên ảnh chỉ để minh hoạ, không phải kết quả thật. <b>Lưu ý:</b> ảnh Ngân sách có thêm vài tình huống dựng để minh hoạ tính năng (campaign bị tắt, quảng cáo chờ duyệt); ảnh Telegram là bản dựng lại đúng định dạng tin của bot, không phải ảnh chụp điện thoại.</span><span class="en">Screenshots taken from the web app's demo build: names and codes replaced with samples; spend, revenue and customer counts transformed with secret factors, so every figure and ratio shown is illustrative, not a real result. <b>Note:</b> the Budget screenshot includes a few staged situations to illustrate the feature (stopped campaigns, ads pending review); the Telegram image is a rendering of the bot's real message format, not a phone screenshot.</span></p>
+    <p class="note"><span class="vi"><b>Lưu ý trung thực:</b> kết quả quảng cáo (−42% giá tin nhắn, ROAS) có trước khi có web, tôi không gán cho công cụ. Tracker giúp phát hiện sớm và tiết kiệm thời gian báo cáo.</span><span class="en"><b>Honest note:</b> the ad results (−42% cost per message, ROAS) came before the web app, and I do not credit them to the tool. The tracker helps catch problems early and saves reporting time.</span></p>
+  </div>
+
+  <figure class="figure">
+    <h3><span class="vi">Luồng dữ liệu</span><span class="en">Data flow</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Diagram">
+      <img class="vi mw-720" src="img/tracker_vi.svg" alt="Sơ đồ luồng dữ liệu: Meta Marketing API và Pancake CRM đổ vào Supabase (8 job đồng bộ, 12 lần mỗi ngày), sau đó ra Web báo cáo và Cảnh báo mỗi giờ, tới Báo cáo tuần/tháng và Telegram." width="1000" height="400">
+      <img class="en mw-720" src="img/tracker_en.svg" alt="Data flow diagram: Meta Marketing API and Pancake CRM feed Supabase (8 sync jobs, 12 runs a day), which feeds the reporting web app and hourly alerts, leading to weekly/monthly reports and Telegram." width="1000" height="400">
+    </div>
+  </figure>
+</section>
+</section>
+
+<!-- MORE EXPERIENCE -->
+<section id="more" class="sec" aria-labelledby="more-h" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+    <h2 class="h" id="more-h"><span class="vi">Kinh nghiệm khác</span><span class="en">More experience</span></h2>
+    <p class="sub"><span class="vi">Bấm vào từng mục để xem đầy đủ bối cảnh, việc tôi làm và số liệu.</span><span class="en">Open any item for the full context, what I did and the figures.</span></p>
+  </div>
+  <div class="mlist">
+  <details class="more" id="case-strat">
+    <summary class="msum"><span class="mm"><span class="m disp gt"><span class="vi">23,2</span><span class="en">23.2</span>%</span><span class="cp"><span class="vi">chi phí / doanh thu T1/2026, sau khi chia vai page</span><span class="en">cost / revenue in Jan 2026, after giving pages clear roles</span></span></span><span class="mt"><span class="ti"><span class="vi">Chia vai page và giữ định vị giá cao</span><span class="en">Page roles and premium positioning</span></span><span class="one"><span class="vi">Mỗi page một dòng ghế; page chính neo giá từ cao xuống thấp, page vệ tinh chạy một thông điệp sản phẩm.</span><span class="en">Each page focuses on one chair line; the main page anchors prices from high to low, satellite pages run one product message.</span></span></span><span class="tog"><span class="tc"><span class="vi">Xem chi tiết</span><span class="en">View details</span></span><span class="to"><span class="vi">Thu gọn</span><span class="en">Collapse</span></span></span></summary>
+    <div class="mbody">
+<!-- CASE STRATEGY -->
+<section class="case">
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Bối cảnh</span><span class="en">Context</span></h4><p><span class="vi">Năm 2025 nhiều page cùng chạy nhiều sản phẩm, khách nhắn trùng page, chương trình giảm giá chạy dàn trải.</span><span class="en">In 2025 many pages ran many products at once, customers messaged several pages, and discount offers were spread thin.</span></p></div>
+    <div class="blk"><h4><span class="vi">Việc tôi làm</span><span class="en">What I did</span></h4><ul>
+      <li><span class="vi"><b>Chia vai page (T9/2025):</b> mỗi page tập trung một dòng ghế; hai page lớn chạy chương trình tháng cho cả hệ thống.</span><span class="en"><b>Page roles (Sep 2025):</b> each page focuses on one chair line; two large pages run the monthly offer for the whole network.</span></li>
+      <li><span class="vi"><b>Page chính và page vệ tinh (T1/2026):</b> page chính đăng chương trình với giá từ cao xuống thấp; page vệ tinh chạy một thông điệp sản phẩm và remarketing nửa cuối tháng.</span><span class="en"><b>Main and satellite pages (Jan 2026):</b> the main page shows the offer with prices from high to low; satellite pages run one product message and remarketing in the second half of the month.</span></li>
+      <li><span class="vi"><b>Sửa cách test (11/2025):</b> ban đầu chia nhiều camp ngân sách nhỏ, tắt khi tiêu 250 nghìn chưa có tin nhắn; thấy quảng cáo học kém vì ngân sách quá mỏng nên chuyển sang dồn ngân sách test vào ít nhóm, bài tốt thì thêm quảng cáo vào nhóm và tăng ngân sách thay vì nhân camp.</span><span class="en"><b>Fixed the testing method (Nov 2025):</b> at first I split spend across many small-budget campaigns and stopped each at 250K VND with no message; ads learned poorly because budgets were too thin, so I concentrated test budget in fewer groups, and for proven posts add ads to the group and raise budget instead of duplicating campaigns.</span></li></ul></div>
+    <div class="blk"><h4><span class="vi">Giữ định vị giá cao</span><span class="en">Keeping premium positioning</span></h4><p><span class="vi">Khi phân tích một dòng ghế mới (11/2025), tôi rút ra: khách chưa hứng thú với sản phẩm thì quà hay giảm giá cũng không có giá trị. Trong báo cáo tổng kết T12/2025 tôi nêu: giảm giá sâu liên tục và quá nhiều bài dòng thấp khiến khách xem thương hiệu là hàng rẻ, không chấp nhận giá dòng cao. T3–T4/2026 đổi tệp khách và hạn chế ưu đãi: chi phí/doanh thu ghế lớn từ 49,6% (T3) về 23,7% (T4). Từ T4/2026 content chuyển sang giáo dục giá trị: tin nhắn đắt hơn nhưng khách hiểu đúng giá trị sản phẩm.</span><span class="en">Analysing a new chair line (Nov 2025), I concluded that when customers are not interested in the product, gifts and discounts add no value. In my Dec 2025 summary report I stated that constant deep discounts and too many low-end posts made customers see the brand as cheap and reject premium prices. In Mar–Apr 2026 I changed the audience and limited offers: premium-chair cost/revenue went from 49.6% (Mar) to 23.7% (Apr). From Apr 2026 creatives shifted to explaining value: messages cost more, but customers understand what the product is worth.</span></p></div>
+  </div>
+  <div class="rgrid">
+    <div class="rc"><span class="n disp gt"><span class="vi">23,2</span><span class="en">23.2</span>%</span><span class="t"><span class="vi">chi phí / doanh thu T1/2026</span><span class="en">cost / revenue, Jan 2026</span></span><span class="s"><span class="vi">T2/2026: 25,6%</span><span class="en">Feb 2026: 25.6%</span></span></div>
+    <div class="rc"><span class="n disp gt"><span class="vi">12,6</span><span class="en">12.6</span>%</span><span class="t"><span class="vi">chi phí / doanh thu nhóm album ảnh</span><span class="en">cost / revenue, photo-album group</span></span><span class="s"><span class="vi">bài nhiều sản phẩm, T2/2025–T9/2026</span><span class="en">multi-product posts, Feb 2025 – Sep 2026</span></span></div>
+  </div>
+  <p class="note"><span class="vi"><b>Bài học:</b> với hàng giá cao, cấu trúc page và thông điệp quan trọng không kém việc tối ưu từng quảng cáo.</span><span class="en"><b>Lesson:</b> for high-ticket goods, page structure and messaging matter as much as tuning each ad.</span></p>
+</section>
+    </div>
+  </details>
+  <details class="more" id="case-funnel">
+    <summary class="msum"><span class="mm"><span class="m disp gt"><span class="vi">3 tầng</span><span class="en">3 stages</span></span><span class="cp"><span class="vi">nhận biết · tin tưởng · chốt</span><span class="en">awareness · trust · conversion</span></span></span><span class="mt"><span class="ti"><span class="vi">Phễu O2O và thang giá trị</span><span class="en">The O2O funnel and value ladder</span></span><span class="one"><span class="vi">Khách mua ghế khoảng 13⁠–⁠140 triệu đồng tìm hiểu kỹ, bàn với gia đình và thường chốt trễ, nên một quảng cáo đơn lẻ không đủ.</span><span class="en">Buyers of $500–$5,499 chairs research carefully, talk it over with family and often decide late, so a single ad is not enough.</span></span></span><span class="tog"><span class="tc"><span class="vi">Xem chi tiết</span><span class="en">View details</span></span><span class="to"><span class="vi">Thu gọn</span><span class="en">Collapse</span></span></span></summary>
+    <div class="mbody">
+  <div class="chead">
+    <p class="sub"><span class="vi">Khách mua ghế khoảng 13⁠–⁠140 triệu đồng tìm hiểu kỹ, bàn với gia đình, so sánh nhiều nơi và thường chốt trễ. Một quảng cáo đơn lẻ không đủ để họ quyết định.</span><span class="en">Buyers of $500–$5,499 chairs research carefully, talk it over with family, compare stores and often decide late. A single ad is not enough.</span></p>
+  </div>
+  <figure class="figure">
+    <h3><span class="vi">Phễu bán hàng O2O 3 tầng</span><span class="en">Three-stage O2O sales funnel</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Diagram">
+      <img class="vi mw-720" src="img/funnel_vi.svg" alt="Sơ đồ phễu 3 tầng. Nhận biết: bài brand, video review showroom chạy ThruPlay và Reach, đo bằng khách tự nhắn tăng. Tin tưởng: feedback, ảnh tại nhà khách, KOL, bài bác sĩ đề xuất, đo bằng tỷ lệ tin nhắn ra data và % lead hợp lệ. Chốt: chương trình tháng, event, remarketing nửa cuối tháng, đo bằng chi phí mỗi đơn, tỷ lệ chốt và trần chi phí 28% doanh thu. Mũi tên remarketing đưa khách từ tầng nhận biết về tầng chốt. Bên dưới là 6 bậc đo: Quảng cáo, Tin nhắn, Lead hợp lệ, Data hoặc hẹn ghé, Ghé showroom, Đơn hàng; khoảng 6,3% tin nhắn ghế cao cấp ra đơn." width="1000" height="552">
+      <img class="en mw-720" src="img/funnel_en.svg" alt="Three-stage funnel diagram. Awareness: brand posts and showroom review videos on ThruPlay and Reach, measured by more organic messages. Trust: feedback, in-home photos, KOLs, doctor-recommended posts, measured by message-to-data rate and qualified-lead %. Conversion: monthly offers, events and second-half-of-month remarketing, measured by cost per order, close rate and a 28% cost/revenue ceiling. A remarketing arrow brings people from awareness to conversion. Below are 6 measured steps: Ads, Messages, Qualified lead, Data or visit, Showroom visit, Order; about 6.3% of premium-chair messages became orders." width="1000" height="552">
+    </div>
+  </figure>
+  <div class="figure">
+    <h3><span class="vi">Phễu 3 tầng</span><span class="en">Three-stage funnel</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Table">
+      <table class="t" style="min-width:720px">
+        <thead><tr>
+          <th scope="col"><span class="vi">Tầng</span><span class="en">Stage</span></th>
+          <th scope="col"><span class="vi">Mục đích</span><span class="en">Purpose</span></th>
+          <th scope="col"><span class="vi">Nội dung, chiến dịch</span><span class="en">Content, campaigns</span></th>
+          <th scope="col"><span class="vi">Đo bằng</span><span class="en">Measured by</span></th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="k"><span class="vi">Nhận biết</span><span class="en">Awareness</span></td><td><span class="vi">Khơi gợi nhu cầu, phủ thương hiệu</span><span class="en">Spark demand, cover the brand</span></td><td><span class="vi">Bài brand, video review showroom chạy ThruPlay, Reach cho chương trình lớn</span><span class="en">Brand posts, showroom review videos on ThruPlay, Reach for big offers</span></td><td><span class="vi">Khách tự nhắn tăng, giá tin nhắn các bài khác trên page giảm</span><span class="en">More organic messages, lower cost per message on the page's other posts</span></td></tr>
+          <tr><td class="k"><span class="vi">Tin tưởng</span><span class="en">Trust</span></td><td><span class="vi">Cho khách lý do tin</span><span class="en">Give a reason to believe</span></td><td><span class="vi">Feedback, ảnh tại nhà khách, KOL, bài bác sĩ đề xuất, bài tính năng</span><span class="en">Feedback, in-home photos, KOLs, doctor-recommended posts, feature posts</span></td><td><span class="vi">Tỷ lệ tin nhắn ra data, % lead hợp lệ</span><span class="en">Message-to-data rate, qualified-lead %</span></td></tr>
+          <tr><td class="k"><span class="vi">Chốt</span><span class="en">Conversion</span></td><td><span class="vi">Cho khách lý do quyết ngay</span><span class="en">Give a reason to decide now</span></td><td><span class="vi">Chương trình tháng, event (sinh nhật, lễ), remarketing nửa cuối tháng</span><span class="en">Monthly offers, events (anniversary, holidays), second-half-of-month remarketing</span></td><td><span class="vi">Chi phí mỗi đơn, tỷ lệ chốt, %MKT</span><span class="en">Cost per order, close rate, cost/revenue</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap"><span class="vi">Đo theo từng bậc: tin nhắn → số điện thoại → hẹn ghé, đã ghé showroom → đơn; mỗi bậc có ngưỡng riêng và trần chi phí 28% tổng doanh thu (từ T4/2026). Từ T8/2026 đo đủ bậc khách đã ghé showroom.</span><span class="en">Measured at each step: message → phone number → booked or completed showroom visit → order; each step has its own threshold, with a 28% ceiling on cost over total revenue (since Apr 2026). Since Aug 2026 showroom visits are measured too.</span></p>
+  </div>
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Remarketing theo chu kỳ</span><span class="en">Remarketing by offer cycle</span></h4><ul>
+      <li><span class="vi"><b>T6/2025:</b> bài chương trình đắt thì chuyển sang remarketing và ra đơn; giữ làm cách chạy chuẩn từ đó.</span><span class="en"><b>Jun 2025:</b> expensive offer posts moved to remarketing and produced orders; kept as the standard from then on.</span></li>
+      <li><span class="vi"><b>T1/2026:</b> chỉ remarketing nửa cuối tháng, khi khách đã tìm hiểu đủ.</span><span class="en"><b>Jan 2026:</b> remarketing only in the second half of the month, once customers have done their research.</span></li>
+      <li><span class="vi"><b>T5/2026:</b> remarketing bằng bài giá trị và feedback.</span><span class="en"><b>May 2026:</b> remarketing with value and feedback posts.</span></li></ul></div>
+    <div class="blk"><h4><span class="vi">Thang giá trị</span><span class="en">Value ladder</span></h4><ul>
+      <li><span class="vi"><b>Bán lên:</b> một model tầm trung có giá tin nhắn rẻ làm sản phẩm phễu, kéo khách về page rồi chuyển lên dòng cao; khách đến từ quảng cáo sản phẩm bán kèm cũng mua ghế lớn.</span><span class="en"><b>Upsell:</b> a mid-range model with cheap messages as the entry product, then moving buyers up; customers from add-on ads also bought premium chairs.</span></li>
+      <li><span class="vi"><b>Mở rộng phễu:</b> chạy lại dòng cũ có KOL để định hình phân khúc giá cho page cao cấp.</span><span class="en"><b>Wider top:</b> rerunning older models with KOLs to frame the price range for premium pages.</span></li>
+      <li><span class="vi"><b>Tăng giá trị đơn:</b> combo sản phẩm bán kèm với phụ kiện.</span><span class="en"><b>Higher order value:</b> bundling add-on products with accessories.</span></li></ul></div>
+    <div class="blk"><h4><span class="vi">Hướng phát triển tiếp</span><span class="en">What I want to improve next</span></h4><ul>
+      <li><span class="vi">Đo hiệu quả thật của tầng nhận biết và remarketing bằng test có nhóm đối chứng.</span><span class="en">Measure the real effect of awareness and remarketing with holdout tests.</span></li>
+      <li><span class="vi">Theo dõi độ trễ chốt theo từng nhóm khách để biết bao lâu một lead ra đơn.</span><span class="en">Track time-to-close by customer cohort to know how long a lead takes to buy.</span></li>
+      <li><span class="vi">Khai thác khách đã mua: giới thiệu, bán kèm phụ kiện, chăm sóc sau bán.</span><span class="en">Work with past buyers: referrals, accessory sales, after-sales care.</span></li></ul></div>
+  </div>
+    </div>
+  </details>
+  <details class="more" id="case-3">
+    <summary class="msum"><span class="mm"><span class="m disp gt"><span class="vi">373 đơn</span><span class="en">373 orders</span></span><span class="cp"><span class="vi">chi phí 28,0% doanh thu, T6/2025–T9/2026</span><span class="en">28.0% cost/revenue, Jun 2025 – Sep 2026</span></span></span><span class="mt"><span class="ti"><span class="vi">Mở kênh sản phẩm bán kèm từ đầu</span><span class="en">Launching the add-on product channel from zero</span></span><span class="one"><span class="vi">Dựng tài khoản, page, cấu trúc chiến dịch và content riêng cho dòng sản phẩm giá trị đơn khoảng 1/7 ghế cao cấp.</span><span class="en">Set up the account, pages, campaign structure and creatives for a line with an order value of about 1/7 of a premium chair.</span></span></span><span class="tog"><span class="tc"><span class="vi">Xem chi tiết</span><span class="en">View details</span></span><span class="to"><span class="vi">Thu gọn</span><span class="en">Collapse</span></span></span></summary>
+    <div class="mbody">
+<!-- CASE 3 -->
+<section class="case">
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Bối cảnh</span><span class="en">Context</span></h4><p><span class="vi">Từ T6/2025 công ty mở dòng sản phẩm giá thấp hơn (giá trị đơn khoảng 1/7 ghế cao cấp), chưa có kênh quảng cáo.</span><span class="en">From June 2025 the company opened a lower-priced line (order value about 1/7 of a premium chair) with no ad channel yet.</span></p></div>
+    <div class="blk"><h4><span class="vi">Việc tôi làm</span><span class="en">What I did</span></h4><p><span class="vi">Dựng tài khoản, page, cấu trúc chiến dịch và content riêng cho dòng sản phẩm này.</span><span class="en">Set up the account, pages, campaign structure and dedicated creatives for this product line.</span></p></div>
+    <div class="blk"><h4><span class="vi">Kết quả</span><span class="en">Results</span></h4>
+      <div style="display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline"><span class="disp gt" style="font-size:44px;font-weight:800;line-height:1"><span class="vi">373 đơn</span><span class="en">373 orders</span></span><span class="disp gt" style="font-size:44px;font-weight:800;line-height:1"><span class="vi">28,0</span><span class="en">28.0</span>%</span></div>
+      <p style="font-size:14px;color:var(--t3)"><span class="vi">chi phí / doanh thu, T6/2025 – T9/2026</span><span class="en">cost / revenue, Jun 2025 – Sep 2026</span></p>
+      <p style="font-size:14px;color:var(--t2);margin-top:8px"><span class="vi">Tháng đầu (T6/2025), chi phí/doanh thu theo tuần: 69% → 57% → 24% → 19%.</span><span class="en">First month (Jun 2025), weekly cost/revenue: 69% → 57% → 24% → 19%.</span></p></div>
+  </div>
+  <div class="three">
+    <div class="ph"><span class="vi">[Bổ sung: 1 đến 2 câu về khó khăn lúc đầu và cách xử lý]</span><span class="en">[To add: 1 to 2 sentences on early difficulties and how they were handled]</span></div>
+    <div class="ph"><span class="vi">[Bổ sung: 2 đến 3 mẫu quảng cáo của dòng bán kèm]</span><span class="en">[To add: 2 to 3 sample ads of the add-on line]</span></div>
+  </div>
+</section>
+    </div>
+  </details>
+  <details class="more" id="case-5">
+    <summary class="msum"><span class="mm"><span class="m disp gt"><span class="vi">3 nhu cầu</span><span class="en">3 needs</span></span><span class="cp"><span class="vi">báo hiếu · trị liệu · khẳng định vị thế</span><span class="en">filial gift · pain relief · status</span></span></span><span class="mt"><span class="ti"><span class="vi">Content cho sản phẩm giá cao</span><span class="en">Ad creative for high-ticket products</span></span><span class="one"><span class="vi">Content để người xem tự thuyết phục mình; ưu đãi chỉ giúp khách quyết nhanh hơn.</span><span class="en">Creative that lets viewers convince themselves; an offer only helps them decide faster.</span></span></span><span class="tog"><span class="tc"><span class="vi">Xem chi tiết</span><span class="en">View details</span></span><span class="to"><span class="vi">Thu gọn</span><span class="en">Collapse</span></span></span></summary>
+    <div class="mbody">
+<!-- CASE 5 -->
+<section class="case">
+  <div class="chead">
+    <p class="sub"><span class="vi"><b>Triết lý:</b> content để người xem tự thuyết phục mình; ưu đãi chỉ giúp khách quyết nhanh hơn, không phải lý do mua.</span><span class="en"><b>Philosophy:</b> creative should let viewers convince themselves; an offer only helps them decide faster and is not the reason to buy.</span></p>
+  </div>
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Báo hiếu</span><span class="en">Filial gift</span></h4><p><span class="vi">Con mua cho cha mẹ, mua sự an tâm.</span><span class="en">Children buying for their parents, buying peace of mind.</span></p></div>
+    <div class="blk"><h4><span class="vi">Trị liệu</span><span class="en">Pain relief</span></h4><p><span class="vi">Đau lưng, cổ, cần giải pháp tại nhà.</span><span class="en">Back and neck pain, needing a solution at home.</span></p></div>
+    <div class="blk"><h4><span class="vi">Khẳng định vị thế</span><span class="en">Status</span></h4><p><span class="vi">Doanh nhân, ghế là nội thất cao cấp.</span><span class="en">Business owners, the chair as premium furniture.</span></p></div>
+  </div>
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Quy trình</span><span class="en">Process</span></h4>
+      <div class="step"><b>1</b><span><span class="vi">Tôi chuẩn bị 3–4 brief mỗi đợt (3 Whys, ma trận Hook × JTBD).</span><span class="en">I prepare 3–4 briefs per round (3 Whys, Hook × JTBD matrix).</span></span></div>
+      <div class="step"><b>2</b><span><span class="vi">Bàn với Content để chọn bản phù hợp.</span><span class="en">Discuss with Content to pick the right one.</span></span></div>
+      <div class="step"><b>3</b><span><span class="vi">Content/Media sản xuất.</span><span class="en">Content/Media produce it.</span></span></div>
+      <div class="step"><b>4</b><span><span class="vi">Tôi kiểm tra chất lượng trước khi lên quảng cáo.</span><span class="en">I QA it before launch.</span></span></div></div>
+    <div class="blk"><h4><span class="vi">6 nguyên tắc ảnh bán hàng</span><span class="en">6 principles for sales visuals</span></h4><ul>
+      <li><span class="vi">Mỗi thông điệp một khung.</span><span class="en">One message per frame.</span></li>
+      <li><span class="vi">Thứ tự mắt: ghế → con số ưu đãi → quà → tên → kêu gọi.</span><span class="en">Eye order: chair → offer figure → gift → name → call to action.</span></li>
+      <li><span class="vi">Ghế chiếm 55–60% chiều cao.</span><span class="en">The chair takes 55–60% of the height.</span></li>
+      <li><span class="vi">Con số ưu đãi tương phản mạnh nhất.</span><span class="en">The offer figure has the strongest contrast.</span></li>
+      <li><span class="vi">Quà là hình thật, không ghi giá trị.</span><span class="en">Gifts shown as real photos, no stated value.</span></li>
+      <li><span class="vi">Ít chữ, chữ to.</span><span class="en">Little text, large text.</span></li></ul></div>
+    <div class="blk"><h4><span class="vi">Ảnh với AI</span><span class="en">Visuals with AI</span></h4><p><span class="vi">Tư liệu → brief → tài nguyên → bố cục → prompt → dịch Khmer → tạo ảnh → soát → đăng → đo chi phí/đơn. Mỗi chiến dịch một hình tượng riêng (mở hộp quà, vé mời "SHOWROOM PASS", sân khấu nổi trên sông đêm hội).</span><span class="en">Source material → brief → assets → layout → prompt → Khmer translation → generate → review → publish → measure cost per order. Each campaign gets its own concept (unwrapping a gift, a "SHOWROOM PASS" invitation, a stage floating on a festival river at night).</span></p></div>
+  </div>
+  <div class="figure">
+    <h3><span class="vi">Khung một brief video (bản mẫu đã ẩn thông tin nội bộ)</span><span class="en">Skeleton of a video brief (sample, internal details removed)</span></h3>
+    <div class="brief">
+      <div><b>HOOK · 0–3s</b><span class="vi">Nỗi đau cụ thể, chứng minh bằng cơ chế. Không mở bằng logo.</span><span class="en">A specific pain point proven by mechanism. Never opens with a logo.</span></div>
+      <div><b>WHY BUY</b><span class="vi">Tạo căng thẳng, chưa nhắc sản phẩm; kết bằng một câu hỏi.</span><span class="en">Builds tension without naming the product; ends on a question.</span></div>
+      <div><b>WHY ME</b><span class="vi">Mở dần từng lớp: vì sao từng bộ phận giúp được, không đọc thông số.</span><span class="en">Unfolds layer by layer: why each part helps, no spec sheet.</span></div>
+      <div><b>WHY NOW</b><span class="vi">Mời trải nghiệm thử ở showroom; ưu đãi nhắc nhẹ ở cuối, không làm tiêu đề.</span><span class="en">Invite a showroom trial; the offer is a light mention at the end, never the headline.</span></div>
+    </div>
+    <p class="cap" style="margin-top:14px"><span class="vi">Chấm content theo % lead hợp lệ và số đơn, không theo giá tin nhắn.</span><span class="en">Creatives are scored by qualified-lead % and orders, not by cost per message.</span></p>
+  </div>
+  <div class="three">
+    <div class="ph"><span class="vi">[Bổ sung: 3 đến 6 ảnh quảng cáo đã chạy, mỗi ảnh kèm 1 dòng chỉ số]</span><span class="en">[To add: 3 to 6 ads that ran, each with one metric line]</span></div>
+    <div class="ph"><span class="vi">[Bổ sung: 1 đến 2 video (link hoặc ảnh thumbnail)]</span><span class="en">[To add: 1 to 2 videos (link or thumbnail)]</span></div>
+  </div>
+</section>
+    </div>
+  </details>
+  <details class="more" id="case-6">
+    <summary class="msum"><span class="mm"><span class="m disp gt">+62%</span><span class="cp"><span class="vi">lượt hiển thị sau 2 tuần</span><span class="en">impressions after 2 weeks</span></span></span><span class="mt"><span class="ti"><span class="vi">Phục hồi SEO zahaka.com</span><span class="en">Recovering SEO for zahaka.com</span></span><span class="one"><span class="vi">Chẩn đoán redirect sai, trang tranh từ khóa, thiếu schema; sửa theo lô nhỏ có sao lưu.</span><span class="en">Diagnosed wrong redirects, keyword cannibalization and missing schema; fixed in small backed-up batches.</span></span></span><span class="tog"><span class="tc"><span class="vi">Xem chi tiết</span><span class="en">View details</span></span><span class="to"><span class="vi">Thu gọn</span><span class="en">Collapse</span></span></span></summary>
+    <div class="mbody">
+<!-- CASE 6 -->
+<section class="case">
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Bối cảnh</span><span class="en">Context</span></h4><p><span class="vi">Từ 13/10, trang sản phẩm chủ lực tụt hạng.</span><span class="en">From 13 October the flagship product pages dropped in rankings.</span></p></div>
+    <div class="blk"><h4><span class="vi">Chẩn đoán</span><span class="en">Diagnosis</span></h4><p><span class="vi">Redirect tag sai, nhiều trang tranh cùng từ khóa, thiếu schema.</span><span class="en">Wrong tag redirects, several pages competing for the same keyword, missing schema.</span></p></div>
+    <div class="blk"><h4><span class="vi">Việc tôi làm</span><span class="en">What I did</span></h4><p><span class="vi">Kế hoạch 5 giai đoạn (backup → sửa theo lô nhỏ → kiểm tra lại → xoá cache); bản đồ 190 từ khóa, 6 trụ nội dung; quy trình viết bài có brief, soát dữ kiện, QA; 5 bài mới trong tháng 10.</span><span class="en">A 5-stage plan (backup → fix in small batches → re-check → clear cache); a 190-keyword map and 6 content pillars; an article workflow with brief, fact-check and QA; 5 new articles in October.</span></p></div>
+  </div>
+  <div class="rgrid">
+    <div class="rc"><span class="n disp gt">124/124</span><span class="t"><span class="vi">URL sitemap trả 200</span><span class="en">sitemap URLs return 200</span></span></div>
+    <div class="rc"><span class="n disp gt">123/123</span><span class="t"><span class="vi">canonical đúng</span><span class="en">correct canonicals</span></span></div>
+    <div class="rc"><span class="n disp gt">30/30</span><span class="t"><span class="vi">schema Product; 0 lỗi JSON-LD</span><span class="en">Product schema; 0 JSON-LD errors</span></span></div>
+    <div class="rc"><span class="n disp gt">+62%</span><span class="t"><span class="vi">lượt hiển thị sau 2 tuần</span><span class="en">impressions after 2 weeks</span></span><span class="s"><span class="vi">437 → 708 mỗi tuần</span><span class="en">437 → 708 per week</span></span></div>
+    <div class="rc"><span class="n disp gt"><span class="vi">9,3</span><span class="en">9.3</span> → <span class="vi">7,7</span><span class="en">7.7</span></span><span class="t"><span class="vi">vị trí trung vị</span><span class="en">median position</span></span><span class="s"><span class="vi">từ khóa sản phẩm chính 14,9 → 9,1</span><span class="en">main product keywords 14.9 → 9.1</span></span></div>
+  </div>
+  <p class="note"><span class="vi"><b>Trung thực:</b> đây là kết quả bước đầu sau 2 tuần, số tuyệt đối còn nhỏ; tôi sẽ cập nhật khi có 2–3 tháng dữ liệu.</span><span class="en"><b>Honest note:</b> these are early results after 2 weeks and absolute numbers are still small; I will update when 2–3 months of data are in.</span></p>
+  <div class="three"><div class="ph"><span class="vi">[Bổ sung: ảnh Google Search Console so sánh 2 kỳ, có thể che số click]</span><span class="en">[To add: Google Search Console screenshot comparing 2 periods, clicks may be masked]</span></div></div>
+</section>
+    </div>
+  </details>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="sec" aria-labelledby="jr-h" style="display:flex;flex-direction:column;gap:28px">
+  <h2 class="h" id="jr-h"><span class="vi">Hành trình 2 năm</span><span class="en">Two-year journey</span></h2>
+  <div class="figure">
+    <h3><span class="vi">Theo báo cáo tuần/tháng tôi tự viết</span><span class="en">From the weekly and monthly reports I wrote</span></h3>
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Table">
+      <table class="t" style="min-width:720px">
+        <caption><span class="vi">Mốc là chi phí quảng cáo / doanh thu của tháng đó (thấp hơn là tốt hơn).</span><span class="en">Milestones are that month's ad cost / revenue (lower is better).</span></caption>
+        <thead><tr>
+          <th scope="col"><span class="vi">Giai đoạn</span><span class="en">Period</span></th>
+          <th scope="col"><span class="vi">Tôi làm gì</span><span class="en">What I did</span></th>
+          <th scope="col"><span class="vi">Mốc</span><span class="en">Milestone</span></th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="hi"><span class="vi">1 – 3/2025 · Bắt đầu chạy</span><span class="en">Jan – Mar 2025 · Starting out</span></td><td><span class="vi">Kênh chính lúc đầu là sản phẩm MD888; T3/2025 test cùng lúc nhiều dòng ghế, tắt dòng không ra tin nhắn, giữ 2 dòng với trần 1–1,5 triệu/ngày.</span><span class="en">The first main channel was the MD888 product; in Mar 2025 tested many chair lines at once, switched off lines with no messages, kept 2 lines with a daily cap of 1–1.5 million VND.</span></td><td><span class="vi">T2/2025: 55,8%</span><span class="en">Feb 2025: 55.8%</span></td></tr>
+          <tr><td class="hi"><span class="vi">4 – 9/2025 · Có cấu trúc</span><span class="en">Apr – Sep 2025 · Adding structure</span></td><td><span class="vi">Mục tiêu tuần theo ngân sách, giá tin nhắn, giá data, %MKT; mở kênh sản phẩm bán kèm; tìm ra cách remarketing chương trình tháng; chia vai page theo sản phẩm.</span><span class="en">Weekly targets for budget, cost per message, cost per data point and cost/revenue; launched the add-on channel; found a remarketing rhythm for monthly offers; gave each page a product role.</span></td><td><span class="vi">T7/2025: 23,5%</span><span class="en">Jul 2025: 23.5%</span></td></tr>
+          <tr><td class="hi"><span class="vi">10/2025 – 3/2026 · Chiến lược</span><span class="en">Oct 2025 – Mar 2026 · Strategy</span></td><td><span class="vi">Đổi cách test; mô hình page chính và page vệ tinh; nhận ra giảm giá sâu liên tục làm rẻ thương hiệu.</span><span class="en">Changed the testing method; set up a main page with satellite pages; saw that constant deep discounts cheapen the brand.</span></td><td><span class="vi">T1/2026: 23,2%</span><span class="en">Jan 2026: 23.2%</span></td></tr>
+          <tr><td class="hi"><span class="vi">4 – 8/2026 · Số liệu dẫn quyết định</span><span class="en">Apr – Aug 2026 · Data-led decisions</span></td><td><span class="vi">Đề xuất dừng nhóm chương trình tiêu nhiều mà không ra data (người duyệt: trưởng phòng marketing); ngưỡng dừng theo giá tin nhắn và giá data (từ T7); chỉ tiêu dẫn tính ngược từ đích doanh thu (từ T6); giữ sản phẩm mới A11 và tăng ngân sách từng bước.</span><span class="en">Proposed stopping an offer group that spent heavily with no leads (approver: the marketing manager); stop thresholds on cost per message and per data point (from Jul); leading targets worked back from the revenue goal (from Jun); kept the new product A11 and raised budget in steps.</span></td><td><span class="vi">T5/2026: 22,6% (ROAS 4,4x)</span><span class="en">May 2026: 22.6% (4.4x ROAS)</span></td></tr>
+          <tr><td class="hi"><span class="vi">9/2026 · Xây công cụ</span><span class="en">Sep 2026 · Building the tool</span></td><td><span class="vi">Bắt đầu xây Meta Ads Tracker.</span><span class="en">Started building Meta Ads Tracker.</span></td><td><span class="vi">T9/2026: 22,9%</span><span class="en">Sep 2026: 22.9%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai" class="sec" aria-labelledby="ai-h" style="display:flex;flex-direction:column;gap:32px">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span class="eyebrow"><span class="vi">Cách tôi làm việc</span><span class="en">How I work</span></span>
+    <h2 class="h" id="ai-h"><span class="vi">Một người, nhiều AI agent theo vai trò</span><span class="en">One person, several AI agents by role</span></h2>
+  </div>
+  <div class="agrid">
+    <div class="card"><span class="h3 disp gt"><span class="vi">Thiết kế</span><span class="en">Design</span></span><p><span class="vi">Opus lên thiết kế, rà soát và kiểm chứng trên dữ liệu thật.</span><span class="en">Opus designs, reviews and verifies against real data.</span></p></div>
+    <div class="card"><span class="h3 disp gt"><span class="vi">Thực thi</span><span class="en">Execution</span></span><p><span class="vi">Sonnet viết code và nội dung theo bản thiết kế.</span><span class="en">Sonnet writes code and content following the design.</span></p></div>
+    <div class="card"><span class="h3 disp gt"><span class="vi">Việc lặp lại</span><span class="en">Repetitive work</span></span><p><span class="vi">Haiku làm việc cơ học: kéo dữ liệu, đăng theo danh sách.</span><span class="en">Haiku does mechanical work: pulling data, posting from a list.</span></p></div>
+    <div class="card"><span class="h3 disp gt"><span class="vi">Kiểm soát</span><span class="en">Control</span></span><p><span class="vi">Mọi bước chạm dữ liệu thật đều cần tôi duyệt; lỗi phát hiện được ghi thành quy tắc.</span><span class="en">Every step touching live data needs my approval; bugs found become written rules.</span></p></div>
+  </div>
+  <div class="blocks">
+    <div class="blk"><h4><span class="vi">Bộ skill tự viết</span><span class="en">Custom skills</span></h4><p><span class="vi">Báo cáo ADS tuần/tháng ra Word và slide; báo cáo theo creative và page; brief video; prompt ảnh bán hàng; blog SEO có script QA; trang sản phẩm WooCommerce.</span><span class="en">Weekly/monthly ADS reports to Word and slides; creative and page reports; video briefs; sales-visual prompts; SEO blog with a QA script; WooCommerce product pages.</span></p></div>
+    <div class="blk"><h4><span class="vi">Đưa lên hệ thống thật có kiểm soát</span><span class="en">Controlled rollout</span></h4><p><span class="vi">Test ở máy → nạp dữ liệu cũ, đối chiếu số đã có → bật lịch → kiểm tra giao diện.</span><span class="en">Test locally → load historical data and reconcile with known numbers → enable the schedule → check the interface.</span></p></div>
+    <div class="blk"><h4><span class="vi">Biến góp ý thành quy tắc</span><span class="en">Turning feedback into rules</span></h4><p><span class="vi">Lỗi thiết kế phát hiện được ghi vào file hướng dẫn (CLAUDE.md) để mọi agent sau đều áp dụng.</span><span class="en">Design flaws found are written into a guidance file (CLAUDE.md) so every later agent applies them.</span></p></div>
+  </div>
+  <figure class="figure">
+    <div class="scroll-x" tabindex="0" role="group" aria-label="Diagram">
+      <img class="vi mw-720" src="img/agents_vi.svg" alt="Sơ đồ: Huy đặt mục tiêu và duyệt mọi bước chạm dữ liệu thật, giao việc cho Opus (thiết kế, rà soát), Sonnet (viết code, dựng báo cáo) và Haiku (việc cơ học), tạo ra các skill: báo cáo ADS, báo cáo creative, brief video, prompt ảnh, blog SEO, Meta Ads Tracker." width="1000" height="470">
+      <img class="en mw-720" src="img/agents_en.svg" alt="Diagram: Huy sets goals and approves every step touching live data, and delegates to Opus (design, review), Sonnet (code, reports) and Haiku (mechanical work), producing skills: ADS reports, creative reports, video briefs, image prompts, SEO blog, Meta Ads Tracker." width="1000" height="470">
+    </div>
+  </figure>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec" aria-labelledby="ct-h" style="padding-top:0">
+  <div class="band">
+    <div>
+      <h2 id="ct-h"><span class="vi">Cần một người chạy quảng cáo nhìn vào đơn hàng?</span><span class="en">Need an ad buyer who looks at orders?</span></h2>
+      <p><span class="vi">Tôi đang tìm môi trường để phát triển sâu hơn về performance marketing. Tải CV hoặc liên hệ trực tiếp bên dưới.</span><span class="en">I'm looking for a team where I can grow deeper in performance marketing. Download the CV or get in touch below.</span></p>
+    </div>
+    <div class="cbox">
+      <span class="cph">[Email]</span>
+      <span class="cph"><span class="vi">[Số điện thoại]</span><span class="en">[Phone number]</span></span>
+      <span class="cph"><span class="vi">[Có thể bắt đầu từ]</span><span class="en">[Available from]</span></span>
+      <div class="cv" id="cv">
+        <a href="#cv"><span class="vi">CV tiếng Việt [link]</span><span class="en">CV in Vietnamese [link]</span></a>
+        <a href="#cv"><span class="vi">CV tiếng Anh [link]</span><span class="en">CV in English [link]</span></a>
+      </div>
+    </div>
+  </div>
+  <p class="foot"><span class="vi">© 2026 Nguyễn Trường Huy · Số liệu dùng tỷ lệ theo thỏa thuận bảo mật với công ty</span><span class="en">© 2026 Nguyen Truong Huy · Figures are ratios, per the company confidentiality agreement</span></p>
+</section>
+
+</main>
+</div>
+
+<dialog class="lb" id="lb" aria-label="Ảnh phóng to / Enlarged image"><button type="button" class="lb-x" id="lb-x"><span class="vi">Đóng</span><span class="en">Close</span></button><img id="lb-img" alt="" width="1440" height="900"></dialog>
+<script>
+(function(){
+  var KEY="th-portfolio-lang", root=document.documentElement;
+  function apply(l){
+    if(l!=="en") l="vi";
+    root.setAttribute("data-lang",l);
+    root.setAttribute("lang",l);
+    var bs=document.querySelectorAll("[data-set-lang]");
+    for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",bs[i].getAttribute("data-set-lang")===l?"true":"false");}
+    var im=document.querySelectorAll("img[data-alt-vi]");
+    for(var j=0;j<im.length;j++){im[j].setAttribute("alt",im[j].getAttribute(l==="en"?"data-alt-en":"data-alt-vi"));}
+    var li=document.getElementById("lb-img"), cur=document.querySelector(".shot-b[data-open] img");
+    if(li&&cur) li.setAttribute("alt",cur.getAttribute("alt"));
+  }
+  var saved=null;
+  try{saved=localStorage.getItem(KEY);}catch(e){}
+  apply(saved);
+  var bs=document.querySelectorAll("[data-set-lang]");
+  for(var i=0;i<bs.length;i++){
+    bs[i].addEventListener("click",function(){
+      var l=this.getAttribute("data-set-lang");
+      apply(l);
+      try{localStorage.setItem(KEY,l);}catch(e){}
+    });
+  }
+
+  // Lightbox: bấm ảnh để xem cỡ đầy đủ (dialog: Esc, nút Đóng, bấm nền để đóng; trả focus về ảnh đã bấm)
+  (function(){
+    var dlg=document.getElementById("lb"), li=document.getElementById("lb-img"), x=document.getElementById("lb-x"), opener=null;
+    if(!dlg||!dlg.showModal) return;
+    var bs=document.querySelectorAll(".shot-b");
+    for(var i=0;i<bs.length;i++){
+      bs[i].addEventListener("click",function(){
+        opener=this; this.setAttribute("data-open","1");
+        var im=this.querySelector("img");
+        li.src=this.getAttribute("data-full"); li.setAttribute("alt",im.getAttribute("alt"));
+        li.removeAttribute("width"); li.removeAttribute("height");
+        li.setAttribute("width",im.getAttribute("width")); li.setAttribute("height",im.getAttribute("height"));
+        dlg.showModal(); x.focus();
+      });
+    }
+    function done(){ if(opener){ opener.removeAttribute("data-open"); opener.focus(); opener=null; } }
+    dlg.addEventListener("close",done);
+    x.addEventListener("click",function(){ dlg.close(); });
+    dlg.addEventListener("click",function(e){ if(e.target===dlg) dlg.close(); });
+  })();
+})();
+// Mở mục <details> khi liên kết trỏ tới nó
+(function(){
+  function openHash(){
+    var h=location.hash; if(h.length<2) return;
+    var t=document.getElementById(decodeURIComponent(h.slice(1)));
+    if(t&&t.tagName==="DETAILS"&&!t.open){ t.open=true; t.scrollIntoView(); }
+  }
+  window.addEventListener("hashchange",openHash); openHash();
+})();
+</script>
